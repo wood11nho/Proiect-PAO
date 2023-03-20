@@ -5,7 +5,13 @@ This is an e-ticketing app for football matches built using Java OOP. The app al
 ## Installation
 To install the app, follow these steps:
 
+
 Clone this repository to your local machine.
+
 Make sure you have Java 11 or higher installed on your machine.
+
+
 Open the project in your favorite Java IDE.
+
+
 Run the Main class to start the app.
