@@ -22,5 +22,6 @@ public class Main {
 
         Match match1 = new Match("FC Botosani", "FC Dinamo", arena_nationala, 0, pricesmatch1, discountsmatch1);
 
+        match1.printMatchDetails();
     }
 }
