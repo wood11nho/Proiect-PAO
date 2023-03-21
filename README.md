@@ -1,5 +1,5 @@
 # Proiect-PAO
-## Football Match E-Ticketing App
+## 433ckets
 This is an e-ticketing app for football matches built using Java OOP. The app allows users to purchase tickets for football matches, view their ticket details, and cancel their tickets.
 
 ## Installation
