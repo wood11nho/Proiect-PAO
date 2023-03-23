@@ -93,20 +93,30 @@ public class Main {
         int categoryNumber = scanner.nextInt();
 
         //Choose your seat:
-        System.out.println("Choose your seat:");
-        System.out.print("Enter row number: ");
-        int rowNumber = scanner.nextInt();
-        System.out.print("Enter seat number: ");
-        int seatNumber = scanner.nextInt();
+        if (numberOfTickets > 1) {
+            System.out.println("Choose your seats:");
+        } else {
+            System.out.println("Choose your seat:");
+        }
 
-        StadiumPlace stadiumPlace = new StadiumPlace(matchList.get(matchNumber - 1).getStadium(), matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1].getStand(), rowNumber, seatNumber);
-        //afisare loc
-        stadiumPlace.afisare_loc();
+        int rowNumber = 0, seatNumber = 0;
 
-        //create ticket
-        Ticket ticket = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], discountsmatch1[4]);
         Ticket[] tickets = new Ticket[numberOfTickets];
-        tickets[0] = ticket;
+
+        for (int i = 0; i < numberOfTickets; i++) {
+            System.out.println("Ticket " + (i + 1) + ":");
+            System.out.print("Enter row number: ");
+            rowNumber = scanner.nextInt();
+            System.out.print("Enter seat number: ");
+            seatNumber = scanner.nextInt();
+
+            //verify if the seat is occupied
+
+            StadiumPlace stadiumPlace = new StadiumPlace(matchList.get(matchNumber - 1).getStadium(), matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1].getStand(), rowNumber, seatNumber);
+            stadiumPlace.setOccupied(true);
+
+            tickets[i] = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], matchList.get(matchNumber - 1).getDiscounts()[4]);
+        }
 
         //create order
         Order order = new Order(tickets);

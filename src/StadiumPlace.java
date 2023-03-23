@@ -3,6 +3,7 @@ public class StadiumPlace {
     private Stand stand;
     private int row;
     private int seat;
+    private boolean isOccupied;
 
     public StadiumPlace(Stadium stadium, Stand stand, int row, int seat) {
         if (row > stand.getRows_number() || row < 1) {
@@ -17,6 +18,7 @@ public class StadiumPlace {
         this.stand = stand;
         this.row = row;
         this.seat = seat;
+        this.isOccupied = false;
     }
 
     public int getRow() {
@@ -53,5 +55,13 @@ public class StadiumPlace {
 
     public void afisare_loc() {
         System.out.println("Locul " + this.getSeat() + " din randul " + this.getRow() + " din tribuna " + this.getStand().getName() + " din stadionul " + this.getStadium().getName());
+    }
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public void setOccupied(boolean isOccupied) {
+        this.isOccupied = isOccupied;
     }
 }
