@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
+    private static List<User> userList = new ArrayList<>();
+
     public static void main(String[] args) {
 
         Stand[] stands_an = new Stand[4];
@@ -20,8 +26,37 @@ public class Main {
         discountsmatch1[2] = new Discount("Pensionar", 0.25);
         discountsmatch1[3] = new Discount("Familie", 0.75);
 
-        Match match1 = new Match("FC Botosani", "FC Dinamo", arena_nationala, 0, pricesmatch1, discountsmatch1);
+        Match match1 = new Match("FC Dinamo", "FCSB", arena_nationala, 0, pricesmatch1, discountsmatch1);
 
         match1.printMatchDetails();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        User user1 = new User(username, password);
+
+        userList.add(user1);
+
+        //Let's login
+        System.out.println("Login");
+        System.out.print("Enter username: ");
+        String usernameLogin = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String passwordLogin = scanner.nextLine();
+
+        for (User user : userList) {
+            if (user.getUsername().equals(usernameLogin) && user.checkPassword(passwordLogin)) {
+                System.out.println("Login successful!");
+                user.setLogged(true);
+            } else {
+                System.out.println("Login failed!");
+            }
+        }
     }
 }
