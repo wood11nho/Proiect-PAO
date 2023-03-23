@@ -1,13 +1,13 @@
 public class Ticket {
     private Match match;
     private StadiumPlace place;
-    private Price price;
+    private PriceCategory priceCategory;
     private Discount discount;
 
-    public Ticket(Match match, StadiumPlace place, Price price, Discount discount) {
+    public Ticket(Match match, StadiumPlace place, PriceCategory priceCategory, Discount discount) {
         this.match = match;
         this.place = place;
-        this.price = price;
+        this.priceCategory = priceCategory;
         this.discount = discount;
     }
 
@@ -19,15 +19,19 @@ public class Ticket {
         return place;
     }
 
-    public Price getPrice() {
-        return price;
+    public PriceCategory getPriceCategory() {
+        return priceCategory;
     }
 
     public Discount getDiscount() {
         return discount;
     }
 
-    public int getFinalPrice() {
-        return (int) (price.getPrice() * discount.getDiscount());
+    public double getFinalPrice() {
+        return this.getPriceCategory().getPrice() - this.getDiscount().getDiscount();
+    }
+
+    public void afisare_bilet() {
+        System.out.println("Biletul pentru meciul " + this.getMatch().getTeam1() + " - " + this.getMatch().getTeam2() + " din stadionul " + this.getMatch().getStadium().getName() + " in sectiunea " + this.getPlace().getStand().getName() + " randul " + this.getPlace().getRow() + " locul " + this.getPlace().getSeat() + " cu pretul " + this.getPriceCategory().getPrice() + " lei cu discountul " + this.getDiscount().getDiscount() + " are pretul final de " + this.getFinalPrice() + " lei");
     }
 }

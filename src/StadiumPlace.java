@@ -39,7 +39,19 @@ public class StadiumPlace {
         return stadium;
     }
 
+    public Stand getStand() {
+        return stand;
+    }
+
+    public void setStand(Stand stand) {
+        this.stand = stand;
+    }
+
     public void setStadium(Stadium stadium) {
         this.stadium = stadium;
+    }
+
+    public void afisare_loc() {
+        System.out.println("Locul " + this.getSeat() + " din randul " + this.getRow() + " din tribuna " + this.getStand().getName() + " din stadionul " + this.getStadium().getName());
     }
 }

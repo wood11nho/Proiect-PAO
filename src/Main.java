@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     private static List<User> userList = new ArrayList<>();
+    private static List<Match> matchList = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -14,21 +15,21 @@ public class Main {
         stands_an[3] = new Stand("Peluza Sud", 14300, false, 62, 231);
         Stadium arena_nationala = new Stadium("Arena Nationala", "Bucuresti", 55600, stands_an);
 
-        Price[] pricesmatch1 = new Price[5];
-        Discount[] discountsmatch1 = new Discount[4];
-        pricesmatch1[0] = new SouthNorthPrice("Peluza Catalin Hildan", 15);
-        pricesmatch1[1] = new SouthNorthPrice("Peluza Oaspeti", 20);
-        pricesmatch1[2] = new EastWestPrice("Tribuna 2", 30);
-        pricesmatch1[3] = new EastWestPrice("Tribuna 1", 60);
-        pricesmatch1[4] = new VipPrice("VIP", 100);
+        PriceCategory[] pricesmatch1 = new PriceCategory[5];
+        Discount[] discountsmatch1 = new Discount[5];
+        pricesmatch1[0] = new SouthNorthPrice("Peluza Catalin Hildan", stands_an[2], 15);
+        pricesmatch1[1] = new SouthNorthPrice("Peluza Oaspeti", stands_an[3], 20);
+        pricesmatch1[2] = new EastWestPrice("Tribuna 2", stands_an[1], 30);
+        pricesmatch1[3] = new EastWestPrice("Tribuna 1", stands_an[0], 60);
+        pricesmatch1[4] = new VipPrice("VIP", stands_an[0], 100);
         discountsmatch1[0] = new Discount("Student", 0.5);
         discountsmatch1[1] = new Discount("Copil", 0.25);
         discountsmatch1[2] = new Discount("Pensionar", 0.25);
         discountsmatch1[3] = new Discount("Familie", 0.75);
+        discountsmatch1[4] = new Discount("Niciun Discount", 0);
 
         Match match1 = new Match("FC Dinamo", "FCSB", arena_nationala, 0, pricesmatch1, discountsmatch1);
-
-        match1.printMatchDetails();
+        matchList.add(match1);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -58,5 +59,58 @@ public class Main {
                 System.out.println("Login failed!");
             }
         }
+
+        //Let's buy some tickets
+        System.out.println("Buy tickets");
+        System.out.print("Enter number of tickets: ");
+        int numberOfTickets = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Matches available:");
+        for (int i = 0; i < matchList.size(); i++) {
+            System.out.print(i + 1 + ". ");
+            matchList.get(i).printMatchDetails();
+        }
+
+        System.out.print("Enter match number: ");
+        int matchNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Stands available:");
+        for (int i = 0; i < matchList.get(matchNumber - 1).getStadium().getStands().length; i++) {
+            System.out.print(i + 1 + ". ");
+            matchList.get(matchNumber - 1).getStadium().getStands()[i].afisare_stand();
+        }
+
+        System.out.println("Price categories available:");
+        for (int i = 0; i < matchList.get(matchNumber - 1).getPrices().length; i++) {
+            System.out.print(i + 1 + ". ");
+            matchList.get(matchNumber - 1).getPrices()[i].afisare_pret();
+        }
+
+        System.out.println("Choose the category of tickets you want to buy:");
+        System.out.print("Enter category number: ");
+        int categoryNumber = scanner.nextInt();
+
+        //Choose your seat:
+        System.out.println("Choose your seat:");
+        System.out.print("Enter row number: ");
+        int rowNumber = scanner.nextInt();
+        System.out.print("Enter seat number: ");
+        int seatNumber = scanner.nextInt();
+
+        StadiumPlace stadiumPlace = new StadiumPlace(matchList.get(matchNumber - 1).getStadium(), matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1].getStand(), rowNumber, seatNumber);
+        //afisare loc
+        stadiumPlace.afisare_loc();
+
+        //create ticket
+        Ticket ticket = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], discountsmatch1[4]);
+        Ticket[] tickets = new Ticket[numberOfTickets];
+        tickets[0] = ticket;
+
+        //create order
+        Order order = new Order(tickets);
+
+
     }
 }

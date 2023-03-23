@@ -3,15 +3,15 @@ public class Match {
     private String team2;
     private Stadium stadium;
     private int sold_tickets;
-    private Price[] prices;
+    private PriceCategory[] priceCategories;
     private Discount[] discounts;
 
-    public Match(String team1, String team2, Stadium stadium, int sold_tickets, Price[] prices, Discount[] discounts) {
+    public Match(String team1, String team2, Stadium stadium, int sold_tickets, PriceCategory[] priceCategories, Discount[] discounts) {
         this.team1 = team1;
         this.team2 = team2;
         this.stadium = stadium;
         this.sold_tickets = sold_tickets;
-        this.prices = prices;
+        this.priceCategories = priceCategories;
         this.discounts = discounts;
     }
 
@@ -47,12 +47,12 @@ public class Match {
         this.sold_tickets = sold_tickets;
     }
 
-    public Price[] getPrices() {
-        return prices;
+    public PriceCategory[] getPrices() {
+        return priceCategories;
     }
 
-    public void setPrices(Price[] prices) {
-        this.prices = prices;
+    public void setPrices(PriceCategory[] priceCategories) {
+        this.priceCategories = priceCategories;
     }
 
     public Discount[] getDiscounts() {
@@ -65,8 +65,8 @@ public class Match {
 
     public int getIncome() {
         int income = 0;
-        for (int i = 0; i < prices.length; i++) {
-            income += prices[i].getPrice();
+        for (int i = 0; i < priceCategories.length; i++) {
+            income += priceCategories[i].getPrice();
         }
         return income;
     }

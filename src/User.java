@@ -6,11 +6,13 @@ public class User {
     private String username;
     private String passwordHash;
     private boolean isLogged;
+    private Order[] orders;
 
     public User(String username, String password) {
         this.username = username;
         this.passwordHash = hashPassword(password);
         this.isLogged = false;
+        this.orders = new Order[0];
     }
 
     private static String hashPassword(String password) {
@@ -50,5 +52,14 @@ public class User {
     public boolean checkPassword(String password) {
         String hashedPassword = hashPassword(password);
         return hashedPassword.equals(this.passwordHash);
+    }
+
+    public void addOrder(Order order) {
+        Order[] newOrders = new Order[this.orders.length + 1];
+        for (int i = 0; i < this.orders.length; i++) {
+            newOrders[i] = this.orders[i];
+        }
+        newOrders[this.orders.length] = order;
+        this.orders = newOrders;
     }
 }

@@ -1,8 +1,8 @@
-public class SouthNorthPrice extends Price {
+public class SouthNorthPrice extends PriceCategory {
     private int price;
 
-    public SouthNorthPrice(String name, int price) {
-        super(name);
+    public SouthNorthPrice(String name, Stand stand, int price) {
+        super(name, stand);
         this.price = price;
     }
 
@@ -12,5 +12,9 @@ public class SouthNorthPrice extends Price {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void afisare_pret() {
+        System.out.println("Pretul categoriei de pret " + this.getName() + " este " + this.getPrice());
     }
 }

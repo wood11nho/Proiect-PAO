@@ -1,6 +1,7 @@
 public class Stand {
     private String name;
     private int capacity;
+    private int remaining_capacity;
     private boolean home_stand;
     private int rows_number;
     private int seats_per_row;
@@ -8,6 +9,7 @@ public class Stand {
     public Stand(String name, int capacity, boolean home_stand, int rows_number, int seats_per_row) {
         this.name = name;
         this.capacity = capacity;
+        this.remaining_capacity = capacity;
         this.home_stand = home_stand;
         this.rows_number = rows_number;
         this.seats_per_row = seats_per_row;
@@ -38,6 +40,6 @@ public class Stand {
     }
 
     public void afisare_stand() {
-        System.out.println("Tribuna " + this.name + " are o capacitate de " + this.capacity + " locuri si este " + (this.home_stand ? "tribuna de acasa" : "tribuna de oaspeti"));
+        System.out.println("Tribuna " + this.name + " are o capacitate de " + this.remaining_capacity + " locuri si este " + (this.home_stand ? "tribuna de acasa" : "tribuna de oaspeti"));
     }
 }
