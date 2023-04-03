@@ -1,3 +1,5 @@
+package Stands;
+
 public class Stand {
     private String name;
     private int capacity;

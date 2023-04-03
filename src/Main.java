@@ -1,35 +1,43 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import Prices.EastWestPrice;
+import Prices.PriceCategory;
+import Prices.SouthNorthPrice;
+import Prices.VipPrice;
+import Stands.Stand;
+
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class Main {
-    private static List<User> userList = new ArrayList<>();
+    private static Set<User> userList = new HashSet<>();
     private static List<Match> matchList = new ArrayList<>();
-
     public static void main(String[] args) {
+
+        MainService mainService = new MainService();
+
+        mainService.addDiscount(new Discount("Student", 0.5));
+        mainService.addDiscount(new Discount("Copil", 0.25));
+        mainService.addDiscount(new Discount("Pensionar", 0.25));
+        mainService.addDiscount(new Discount("Familie", 0.75));
+        mainService.addDiscount(new Discount("Niciun Discount", 0));
 
         Stand[] stands_an = new Stand[4];
         stands_an[0] = new Stand("Tribuna 1", 13500, true, 62, 218);
         stands_an[1] = new Stand("Tribuna 2", 13500, true, 62, 218);
         stands_an[2] = new Stand("Peluza Nord", 14300, true, 62, 231);
         stands_an[3] = new Stand("Peluza Sud", 14300, false, 62, 231);
-        Stadium arena_nationala = new Stadium("Arena Nationala", "Bucuresti", 55600, stands_an);
 
-        PriceCategory[] pricesmatch1 = new PriceCategory[5];
-        Discount[] discountsmatch1 = new Discount[5];
+        Stadium arena_nationala = new Stadium("Arena Nationala", "Bucuresti", 55600);
+        mainService.setStadiumStands(arena_nationala, stands_an);
+
+        PriceCategory[] pricesmatch1 = new PriceCategory[6];
         pricesmatch1[0] = new SouthNorthPrice("Peluza Catalin Hildan", stands_an[2], 15);
         pricesmatch1[1] = new SouthNorthPrice("Peluza Oaspeti", stands_an[3], 20);
         pricesmatch1[2] = new EastWestPrice("Tribuna 2", stands_an[1], 30);
         pricesmatch1[3] = new EastWestPrice("Tribuna 1", stands_an[0], 60);
-        pricesmatch1[4] = new VipPrice("VIP", stands_an[0], 100);
-        discountsmatch1[0] = new Discount("Student", 0.5);
-        discountsmatch1[1] = new Discount("Copil", 0.25);
-        discountsmatch1[2] = new Discount("Pensionar", 0.25);
-        discountsmatch1[3] = new Discount("Familie", 0.75);
-        discountsmatch1[4] = new Discount("Niciun Discount", 0);
+        pricesmatch1[4] = new VipPrice("VIP", stands_an[0], 200, true);
+        pricesmatch1[5] = new VipPrice("VIP", stands_an[0], 100, false);
 
-        Match match1 = new Match("FC Dinamo", "FCSB", arena_nationala, 0, pricesmatch1, discountsmatch1);
-        matchList.add(match1);
+        mainService.createMatch("FC Dinamo", "FCSB", arena_nationala, LocalDateTime.of(2023, 5, 5, 20, 30), 0, pricesmatch1);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -116,11 +124,11 @@ public class Main {
             stadiumPlace.setOccupied(true);
 
             tickets[i] = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], matchList.get(matchNumber - 1).getDiscounts()[4]);
+            //afisare bilet
+            tickets[i].afisare_bilet();
         }
 
         //create order
         Order order = new Order(tickets);
-
-
     }
 }

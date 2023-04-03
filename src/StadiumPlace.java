@@ -1,3 +1,5 @@
+import Stands.Stand;
+
 public class StadiumPlace {
     private Stadium stadium;
     private Stand stand;

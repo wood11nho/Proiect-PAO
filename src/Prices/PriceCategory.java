@@ -1,6 +1,10 @@
+package Prices;
+
+import Stands.Stand;
+
 public abstract class PriceCategory {
-    private String name;
-    private Stand stand;
+    protected String name;
+    protected Stand stand;
 
     public PriceCategory(String name, Stand stand) {
         this.name = name;

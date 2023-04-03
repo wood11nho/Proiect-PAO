@@ -1,3 +1,5 @@
+import Prices.PriceCategory;
+
 public class Ticket {
     private Match match;
     private StadiumPlace place;

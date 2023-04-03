@@ -1,3 +1,5 @@
+import Stands.Stand;
+
 import java.util.Arrays;
 
 public class Stadium {
@@ -6,15 +8,11 @@ public class Stadium {
     private int capacity;
     private Stand[] stands;
 
-    public Stadium(String name, String city, int capacity, Stand[] stands) {
+    public Stadium(String name, String city, int capacity) {
         this.name = name;
         this.city = city;
         this.capacity = capacity;
         this.stands = new Stand[0];
-
-        for (Stand stand : stands) {
-            this.adaugare_stand(stand);
-        }
     }
 
     public String getName() {

@@ -1,3 +1,7 @@
+package Prices;
+
+import Stands.Stand;
+
 public class EastWestPrice extends PriceCategory {
     private int price;
 
@@ -14,7 +18,8 @@ public class EastWestPrice extends PriceCategory {
         this.price = price;
     }
 
+    @Override
     public void afisare_pret() {
-        System.out.println("Pretul categoriei de pret " + this.getName() + " este " + this.getPrice());
+        System.out.println("Pretul unui bilet la " + name + " este " + price);
     }
 }
