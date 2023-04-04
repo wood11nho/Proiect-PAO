@@ -1,4 +1,4 @@
-import Stands.Stand;
+package MatchDetails;
 
 import java.util.Arrays;
 
@@ -8,11 +8,19 @@ public class Stadium {
     private int capacity;
     private Stand[] stands;
 
-    public Stadium(String name, String city, int capacity) {
+    public Stadium(String name, String city, Stand[] stands) {
         this.name = name;
         this.city = city;
-        this.capacity = capacity;
         this.stands = new Stand[0];
+
+        for (Stand stand : stands) {
+            this.adaugare_stand(stand);
+        }
+
+        this.capacity = 0;
+        for (Stand stand : stands) {
+            this.capacity += stand.getCapacity();
+        }
     }
 
     public String getName() {

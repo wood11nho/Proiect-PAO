@@ -1,6 +1,6 @@
 package Prices;
 
-import Stands.Stand;
+import MatchDetails.Stand;
 
 public class VipPrice extends PriceCategory {
     private int price;
@@ -22,6 +22,9 @@ public class VipPrice extends PriceCategory {
 
     @Override
     public void afisare_pret() {
-        System.out.println("Pretul unui bilet la Tribuna 1 VIP este " + price);
+        if (privateLoungeAccess)
+            System.out.println("Pretul unui bilet la " + name + " este " + price + " si include acces la lounge-ul privat");
+        else
+            System.out.println("Pretul unui bilet la " + name + " este " + price + " si nu include acces la lounge-ul privat");
     }
 }

@@ -1,4 +1,4 @@
-import Stands.Stand;
+package MatchDetails;
 
 public class StadiumPlace {
     private Stadium stadium;

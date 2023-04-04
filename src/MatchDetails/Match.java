@@ -1,3 +1,6 @@
+package MatchDetails;
+
+import OrderDetails.Discount;
 import Prices.PriceCategory;
 
 import java.time.LocalDateTime;

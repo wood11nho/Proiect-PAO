@@ -1,4 +1,4 @@
-package Stands;
+package MatchDetails;
 
 public class Stand {
     private String name;

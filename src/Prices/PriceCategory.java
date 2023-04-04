@@ -1,6 +1,6 @@
 package Prices;
 
-import Stands.Stand;
+import MatchDetails.Stand;
 
 public abstract class PriceCategory {
     protected String name;

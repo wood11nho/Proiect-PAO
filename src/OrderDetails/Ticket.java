@@ -1,3 +1,7 @@
+package OrderDetails;
+
+import MatchDetails.Match;
+import MatchDetails.StadiumPlace;
 import Prices.PriceCategory;
 
 public class Ticket {

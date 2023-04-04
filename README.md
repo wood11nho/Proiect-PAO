@@ -12,29 +12,29 @@ To install the app, follow these steps:
 
 3. Open the project in your favorite Java IDE.
 
-4. Run the Main class to start the app.
+4. Run the Main.Main class to start the app.
 
 ## Actions/Queries
 
-- Create User
-- Login User
-- Create New Order
+- Create Users.User
+- Login Users.User
+- Create New OrderDetails.Order
 - Show Orders Completed
 - Show Profile Details
 - Close Account
 - Show Matches Available
-- Create Seasonal Ticket
-- Show Ticket Details
+- Create Seasonal OrderDetails.Ticket
+- Show OrderDetails.Ticket Details
 
 ## Objects/Classes
 
-- Main
+- Main.Main
 - PriceCategory (+ EastWestPrice, + SouthNorthPrice, + VipPrice)
 - Stand
-- Discount
-- Match
-- Order
-- Stadium
-- StadiumPlace
-- Ticket
-- User
+- OrderDetails.Discount
+- MatchDetails.Match
+- OrderDetails.Order
+- MatchDetails.Stadium
+- MatchDetails.StadiumPlace
+- OrderDetails.Ticket
+- Users.User

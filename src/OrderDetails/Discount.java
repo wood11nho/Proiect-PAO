@@ -1,3 +1,5 @@
+package OrderDetails;
+
 public class Discount {
     private String name;
     private double discount;
@@ -13,5 +15,9 @@ public class Discount {
 
     public double getDiscount() {
         return discount;
+    }
+
+    public void afisare_discount() {
+        System.out.println("Discountul " + name + " este de " + discount + "%");
     }
 }

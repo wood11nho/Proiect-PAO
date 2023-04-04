@@ -1,6 +1,6 @@
 package Prices;
 
-import Stands.Stand;
+import MatchDetails.Stand;
 
 public class SouthNorthPrice extends PriceCategory {
     private int price;
