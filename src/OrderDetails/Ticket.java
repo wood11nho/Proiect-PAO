@@ -34,7 +34,7 @@ public class Ticket {
     }
 
     public double getFinalPrice() {
-        return this.getPriceCategory().getPrice() - this.getDiscount().getDiscount();
+        return this.getPriceCategory().getPrice() * (1 - this.getDiscount().getDiscount());
     }
 
     public void afisare_bilet() {

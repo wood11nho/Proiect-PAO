@@ -14,11 +14,11 @@ public class Match implements Comparable<Match> {
     private Discount[] discounts;
     private LocalDateTime date;
 
-    public Match(String team1, String team2, Stadium stadium, LocalDateTime date, int sold_tickets) {
+    public Match(String team1, String team2, Stadium stadium, LocalDateTime date) {
         this.team1 = team1;
         this.team2 = team2;
         this.stadium = stadium;
-        this.sold_tickets = sold_tickets;
+        this.sold_tickets = 0;
         this.priceCategories = new PriceCategory[0];
         this.discounts = new Discount[0];
         this.date = date;

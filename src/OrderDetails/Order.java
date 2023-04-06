@@ -21,7 +21,7 @@ public class Order {
 
         for (int i = 0; i < tickets.length; i++) {
             addTicket(tickets[i]);
-            this.total_price += tickets[i].getPriceCategory().getPrice();
+            this.total_price += tickets[i].getFinalPrice();
         }
 
         order_count++;
@@ -30,5 +30,13 @@ public class Order {
     public void addTicket(Ticket ticket) {
         tickets = Arrays.copyOf(this.tickets, this.tickets.length + 1);
         tickets[tickets.length - 1] = ticket;
+    }
+
+    public void afisare_comanda() {
+        System.out.println("Comanda cu numarul " + this.order_number + " din data de " + this.order_date + " are urmatoarele bilete:");
+        for (Ticket ticket : tickets) {
+            ticket.afisare_bilet();
+        }
+        System.out.println("Pretul total al comenzii este " + this.total_price + " lei");
     }
 }
