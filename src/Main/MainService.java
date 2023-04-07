@@ -78,6 +78,7 @@ public class MainService {
 
         //add match to the list
         matchList.add(match);
+        Collections.sort(matchList);
     }
 
     public void setStadiumPlaces(StadiumPlace[][][] places_an, Stadium stadium) {
@@ -341,6 +342,7 @@ public class MainService {
                 scanner.nextLine();
 
                 System.out.println("Matches available:");
+                //sortare meciuri
                 for (int i = 0; i < matchList.size(); i++) {
                     System.out.print(i + 1 + ". ");
                     matchList.get(i).printMatchDetails();
