@@ -9,6 +9,10 @@ public class Discount {
         this.discount = discount;
     }
 
+    public Discount() {
+
+    }
+
     public String getName() {
         return name;
     }

@@ -43,9 +43,9 @@ public class Main {
         pricesmatch1[4] = new VipPrice("VIP", stands_an[0], 200, true);
         pricesmatch1[5] = new VipPrice("VIP", stands_an[0], 100, false);
 
-        mainService.createMatch("FC Dinamo", "FCSB", arena_nationala, LocalDateTime.of(2023, 5, 5, 20, 30), pricesmatch1);
+        mainService.createMatch("Dinamo", "FCSB", arena_nationala, LocalDateTime.of(2021, 5, 5, 20, 30), pricesmatch1);
 
-
+        System.out.println("Hello, welcome to 43-3ckets! Here you can buy tickets for your favorite matches!");
         //Let's create an account
         mainService.createAccount(scanner);
 
@@ -58,6 +58,7 @@ public class Main {
             }
         }
 
+
         //verify if you are admin
         if (mainService.isUserAdmin()) {
             mainService.adminMenu();
@@ -65,93 +66,5 @@ public class Main {
         } else {
             mainService.userMenu();
         }
-
-        //Let's buy some tickets
-//        System.out.println("Buy tickets");
-//        System.out.print("Enter number of tickets: ");
-//        int numberOfTickets = scanner.nextInt();
-//        scanner.nextLine();
-//
-//        System.out.println("Matches available:");
-//        for (int i = 0; i < matchList.size(); i++) {
-//            System.out.print(i + 1 + ". ");
-//            matchList.get(i).printMatchDetails();
-//        }
-//
-//        System.out.print("Enter match number: ");
-//        int matchNumber = scanner.nextInt();
-//        scanner.nextLine();
-//
-//        System.out.println("Stands available:");
-//        for (int i = 0; i < matchList.get(matchNumber - 1).getStadium().getStands().length; i++) {
-//            System.out.print(i + 1 + ". ");
-//            matchList.get(matchNumber - 1).getStadium().getStands()[i].afisare_stand();
-//        }
-//
-//        System.out.print("Enter stand number: ");
-//        int standNumber = scanner.nextInt();
-//        scanner.nextLine();
-//
-//        System.out.println("Price categories available for this stand:");
-//        for (int i = 0; i < matchList.get(matchNumber - 1).getPrices().length; i++) {
-//            if (matchList.get(matchNumber - 1).getPrices()[i].getStand().equals(matchList.get(matchNumber - 1).getStadium().getStands()[standNumber - 1])) {
-//                System.out.print(i + 1 + ". ");
-//                matchList.get(matchNumber - 1).getPrices()[i].afisare_pret();
-//            }
-//        }
-//
-//        System.out.println("Choose the category of tickets you want to buy:");
-//        System.out.print("Enter category number: ");
-//        int categoryNumber = scanner.nextInt();
-//
-//        //Choose your seat:
-//        if (numberOfTickets > 1) {
-//            System.out.println("Choose your seats:");
-//        } else {
-//            System.out.println("Choose your seat:");
-//        }
-//
-//        int rowNumber = 0, seatNumber = 0;
-//
-//        Ticket[] tickets = new Ticket[numberOfTickets];
-//
-//        for (int i = 0; i < numberOfTickets; i++) {
-//            System.out.println("OrderDetails.Ticket " + (i + 1) + ":");
-//            System.out.print("Enter row number: ");
-//            rowNumber = scanner.nextInt();
-//            System.out.print("Enter seat number: ");
-//            seatNumber = scanner.nextInt();
-//
-//            //verify if the seat is occupied
-//
-//            do {
-//                if (places_an[standNumber - 1][rowNumber][seatNumber].isOccupied()) {
-//                    System.out.println("This seat is occupied. Please choose another one.");
-//                    System.out.print("Enter row number: ");
-//                    rowNumber = scanner.nextInt();
-//                    System.out.print("Enter seat number: ");
-//                    seatNumber = scanner.nextInt();
-//                }
-//            } while (places_an[standNumber - 1][rowNumber][seatNumber].isOccupied());
-//
-//            //create ticket
-//
-//            System.out.println("Discounts available: ");
-//            for (int j = 0; j < matchList.get(matchNumber - 1).getDiscounts().length; j++) {
-//                System.out.print(j + 1 + ". ");
-//                matchList.get(matchNumber - 1).getDiscounts()[j].afisare_discount();
-//            }
-//
-//            System.out.print("Enter discount number: ");
-//            int discountNumber = scanner.nextInt();
-//
-//            StadiumPlace stadiumPlace = new StadiumPlace(matchList.get(matchNumber - 1).getStadium(), matchList.get(matchNumber - 1).getStadium().getStands()[standNumber - 1], rowNumber, seatNumber);
-//            tickets[i] = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], matchList.get(matchNumber - 1).getDiscounts()[discountNumber - 1]);
-//            //afisare bilet
-//            tickets[i].afisare_bilet();
-//        }
-//
-//        //create order
-//        Order order = new Order(tickets);
     }
 }

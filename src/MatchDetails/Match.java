@@ -88,4 +88,8 @@ public class Match implements Comparable<Match> {
     public int compareTo(Match o) {
         return this.date.compareTo(o.date);
     }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
 }

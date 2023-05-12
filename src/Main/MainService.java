@@ -52,26 +52,36 @@ public class MainService {
         discountList.add(discount);
     }
 
+    //get list of discounts
+
+    public List<Discount> getDiscountList() {
+        return discountList;
+    }
+
     public void createMatch(String homeTeam, String awayTeam, Stadium stadium, LocalDateTime date, PriceCategory[] priceCategories) {
         Match match = new Match(homeTeam, awayTeam, stadium, date);
 
-        //show discounts available
-        System.out.println("Discounts available: ");
+        //show discounts available only if the match doesn't have the discounts set
+        if (matchList.size() != 0) {
+            System.out.println("Discounts available: ");
 
-        for (int i = 0; i < discountList.size(); i++) {
-            System.out.println(i + ". " + discountList.get(i).getName());
-        }
+            for (int i = 0; i < discountList.size(); i++) {
+                System.out.println(i + ". " + discountList.get(i).getName());
+            }
 
-        //choose discounts from the list, from keyboard and add them to the match
-        System.out.println("Choose discounts for this match: ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        String[] inputArray = input.split(" ");
-        Discount[] discounts = new Discount[inputArray.length];
-        for (int i = 0; i < inputArray.length; i++) {
-            discounts[i] = discountList.get(Integer.parseInt(inputArray[i]));
+            //choose discounts from the list, from keyboard and add them to the match
+            System.out.println("Choose discounts for this match: ");
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            String[] inputArray = input.split(" ");
+            Discount[] discounts = new Discount[inputArray.length];
+            for (int i = 0; i < inputArray.length; i++) {
+                discounts[i] = discountList.get(Integer.parseInt(inputArray[i]));
+            }
+            match.setDiscounts(discounts);
+        } else {
+            match.setDiscounts(discountList.toArray(new Discount[0]));
         }
-        match.setDiscounts(discounts);
 
         //set prices for the match
         match.setPrices(priceCategories);
@@ -216,8 +226,9 @@ public class MainService {
     public void adminMenu() {
         System.out.println("1. Create match");
         System.out.println("2. Create discount");
-        System.out.println("3. Logout");
-        System.out.println("4. Exit");
+        System.out.println("3. See available discounts");
+        System.out.println("4. Logout");
+        System.out.println("5. Exit");
 
         int input = scanner.nextInt();
         scanner.nextLine();
@@ -322,13 +333,70 @@ public class MainService {
                 LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
                 createMatch(homeTeamName, awayTeamName, stadium, dateTime, priceCategories);
                 break;
+            case 2:
+                System.out.println("Create discount");
+                System.out.println("Enter discount name: ");
+                String discountName = scanner.nextLine();
+                System.out.println("Enter discount percentage: ");
+                double discountPercentage = scanner.nextDouble();
+                scanner.nextLine();
+
+                Discount discount = new Discount(discountName, discountPercentage);
+                System.out.println("Discount created");
+                discountList.add(discount);
+                adminMenu();
+                break;
+            case 3:
+                System.out.println("See available discounts");
+                for (int i = 0; i < discountList.size(); i++) {
+                    System.out.println(discountList.get(i).getName() + " " + discountList.get(i).getDiscount());
+                }
+                adminMenu();
+                break;
+            case 4:
+                System.out.println("Logout");
+                currentUser = null;
+                loginMenu();
+                break;
+            case 5:
+                System.out.println("Exit");
+                System.exit(0);
+                break;
+
+        }
+    }
+
+    private void loginMenu() {
+        System.out.println("1. Login");
+        System.out.println("2. Register");
+        System.out.println("3. Exit");
+
+        int input = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (input) {
+            case 1:
+                login(scanner);
+                if (isUserAdmin())
+                    adminMenu();
+                else
+                    userMenu();
+                break;
+            case 2:
+                createAccount(scanner);
+                break;
+            case 3:
+                System.out.println("Exit");
+                System.exit(0);
+                break;
         }
     }
 
     public void userMenu() {
         System.out.println("1. Buy ticket");
-        System.out.println("2. Logout");
-        System.out.println("3. Exit");
+        System.out.println("2. See my orders");
+        System.out.println("3. Logout");
+        System.out.println("4. Exit");
 
         int input = scanner.nextInt();
         scanner.nextLine();
@@ -386,7 +454,7 @@ public class MainService {
                 Ticket[] tickets = new Ticket[numberOfTickets];
 
                 for (int i = 0; i < numberOfTickets; i++) {
-                    System.out.println("OrderDetails.Ticket " + (i + 1) + ":");
+                    System.out.println("Ticket " + (i + 1) + ":");
                     System.out.print("Enter row number: ");
                     rowNumber = scanner.nextInt();
                     System.out.print("Enter seat number: ");
@@ -450,6 +518,25 @@ public class MainService {
                 //add order to user
                 currentUser.addOrder(order);
                 currentUser.afisare_comenzi();
+                System.out.println("------------------------------------");
+                userMenu();
+                break;
+            case 2:
+                System.out.println("View orders");
+                currentUser.afisare_comenzi();
+                System.out.println("------------------------------------");
+                userMenu();
+                break;
+            case 3:
+                //logout
+                System.out.println("Logout");
+                currentUser = null;
+                loginMenu();
+                break;
+            case 4:
+                //exit
+                System.out.println("Exit");
+                System.exit(0);
                 break;
         }
     }
