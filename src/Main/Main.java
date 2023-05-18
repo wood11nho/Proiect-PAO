@@ -1,5 +1,6 @@
 package Main;
 
+import Database.StandsTable;
 import MatchDetails.Stadium;
 import MatchDetails.StadiumPlace;
 import MatchDetails.Stand;
@@ -29,6 +30,12 @@ public class Main {
         stands_an[1] = new Stand("Tribuna 2", 13500, true, 61, 226);
         stands_an[2] = new Stand("Peluza Nord", 14280, true, 61, 239);
         stands_an[3] = new Stand("Peluza Sud", 14280, false, 61, 239);
+
+        StandsTable standsTable = new StandsTable();
+        standsTable.addStand("Tribuna 1", 13500, 13500, true, 61, 226);
+        standsTable.addStand("Tribuna 2", 13500, 13500, true, 61, 226);
+        standsTable.addStand("Peluza Nord", 14280, 14280, true, 61, 239);
+        standsTable.addStand("Peluza Sud", 14280, 14280, false, 61, 239);
 
         Stadium arena_nationala = new Stadium("Arena Nationala", "Bucuresti", stands_an);
 

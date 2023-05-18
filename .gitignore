@@ -1,2 +1,5 @@
 # Ignore admin.properties file
 admin.properties
+
+# Ignore database.properties file
+database.properties
