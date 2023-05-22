@@ -1,8 +1,12 @@
 package Database;
 
+import MatchDetails.Match;
+import MatchDetails.Stadium;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 
 public class MatchesTable {
     private Connection connection;
@@ -31,5 +35,33 @@ public class MatchesTable {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public void addMatch(Match match) {
+        try {
+            Statement statement = connection.createStatement();
+            //get ID of stadium from database
+            ResultSet stadiumID = statement.executeQuery("SELECT id FROM Stadiums WHERE name = '" + match.getStadium().getName() + "'");
+            statement.executeUpdate("INSERT INTO Matches (team1, team2, stadiumid, soldtickets, datetime) VALUES ('" + match.getTeam1() + "', '" + match.getTeam2() + "', " + stadiumID + ", " + match.getSoldTickets() + ", '" + match.getDate() + "')");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public int getMatchId(String homeTeamName, String awayTeamName, Stadium stadium, LocalDateTime dateTime) {
+        try {
+            Statement statement = connection.createStatement();
+            //get stadium id from database
+            ResultSet stadiumID = statement.executeQuery("SELECT id FROM Stadiums WHERE name = '" + stadium.getName() + "'");
+            //get match id from database
+            ResultSet resultSet = statement.executeQuery("SELECT id FROM Matches WHERE team1 = '" + homeTeamName + "' AND team2 = '" + awayTeamName + "' AND stadiumid = " + stadiumID + " AND datetime = '" + dateTime + "'");
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return -1;
     }
 }

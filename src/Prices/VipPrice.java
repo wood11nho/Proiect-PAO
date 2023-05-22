@@ -27,4 +27,8 @@ public class VipPrice extends PriceCategory {
         else
             System.out.println("Pretul unui bilet la " + name + " este " + price + " si nu include acces la lounge-ul privat");
     }
+
+    public boolean getPrivateLoungeAccess() {
+        return privateLoungeAccess;
+    }
 }

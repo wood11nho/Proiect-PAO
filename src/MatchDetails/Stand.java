@@ -44,4 +44,20 @@ public class Stand {
     public void afisare_stand() {
         System.out.println("Tribuna " + this.name + " are o capacitate de " + this.remaining_capacity + " locuri si este " + (this.home_stand ? "tribuna de acasa" : "tribuna de oaspeti"));
     }
+
+    public int getRemainingCapacity() {
+        return remaining_capacity;
+    }
+
+    public int isHomeStand() {
+        return home_stand ? 1 : 0;
+    }
+
+    public int getRowsNumber() {
+        return rows_number;
+    }
+
+    public int getSeatsPerRow() {
+        return seats_per_row;
+    }
 }

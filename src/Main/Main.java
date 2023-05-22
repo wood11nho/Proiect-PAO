@@ -71,7 +71,6 @@ public class Main {
             }
         }
 
-
         //verify if you are admin
         if (mainService.isUserAdmin()) {
             mainService.adminMenu();

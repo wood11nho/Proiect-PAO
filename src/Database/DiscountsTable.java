@@ -1,5 +1,7 @@
 package Database;
 
+import OrderDetails.Discount;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -23,10 +25,28 @@ public class DiscountsTable {
         }
     }
 
-    public void addDiscount(String name, double discount, int match_id) {
+    public void addDiscount(String name, double discount) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO Discounts (name, discount, matchid) VALUES ('" + name + "', " + discount + ", " + match_id + ")");
+            statement.executeUpdate("INSERT INTO Discounts (name, discount) VALUES ('" + name + "', " + discount + ")");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void addDiscount(Discount discount) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO Discounts (name, discount) VALUES ('" + discount.getName() + "', " + discount.getDiscount() + ")");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void updateMatchID(Discount discount, int matchID) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("UPDATE Discounts SET matchid = " + matchID + " WHERE name = '" + discount.getName() + "'");
         } catch (Exception e) {
             System.out.println(e);
         }

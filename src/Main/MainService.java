@@ -1,9 +1,6 @@
 package Main;
 
-import Database.DiscountsTable;
-import Database.PriceCategoriesTable;
-import Database.StadiumsTable;
-import Database.StandsTable;
+import Database.*;
 import MatchDetails.Match;
 import MatchDetails.Stadium;
 import MatchDetails.StadiumPlace;
@@ -35,6 +32,7 @@ public class MainService {
     static DiscountsTable discountsTable = new DiscountsTable();
     static PriceCategoriesTable priceCategoriesTable = new PriceCategoriesTable();
     static StadiumsTable stadiumsTable = new StadiumsTable();
+    static MatchesTable matchesTable = new MatchesTable();
 
     static {
         try {
@@ -56,10 +54,6 @@ public class MainService {
     public MainService() {
     }
 
-    public void addDiscount(Discount discount) {
-        discountList.add(discount);
-    }
-
     public void createMatch(String homeTeam, String awayTeam, Stadium stadium, LocalDateTime date, PriceCategory[] priceCategories) {
         Match match = new Match(homeTeam, awayTeam, stadium, date);
 
@@ -79,6 +73,8 @@ public class MainService {
             Discount[] discounts = new Discount[inputArray.length];
             for (int i = 0; i < inputArray.length; i++) {
                 discounts[i] = discountList.get(Integer.parseInt(inputArray[i]));
+                //set the field "matchid" from discounts table to the id of the match
+                discountsTable.updateMatchID(discounts[i], matchesTable.getMatchId(homeTeam, awayTeam, stadium, date));
             }
             match.setDiscounts(discounts);
         } else {
@@ -90,6 +86,9 @@ public class MainService {
 
         //add match to the list
         matchList.add(match);
+
+        //add match to the database
+        matchesTable.addMatch(match);
         Collections.sort(matchList);
     }
 
@@ -266,8 +265,14 @@ public class MainService {
                     boolean isHomeStand = scanner.nextBoolean();
                     scanner.nextLine();
                     stands[i] = new Stand(standName, standRowsNumber * standSeatsPerRow, isHomeStand, standRowsNumber, standSeatsPerRow);
+                    //add stand to database
+                    standsTable.addStand(stands[i]);
                 }
                 Stadium stadium = new Stadium(stadiumName, stadiumCity, stands);
+                //update stand field with stadium id
+                for (int i = 0; i < 4; i++) {
+                    standsTable.updateStadiumId(stands[i], stadium);
+                }
                 StadiumPlace[][][] places = new StadiumPlace[4][][];
 
                 setStadiumPlaces(places, stadium);
@@ -294,9 +299,11 @@ public class MainService {
                             boolean hasPrivateLounge = scanner.nextBoolean();
                             scanner.nextLine();
                             priceCategories[i] = new VipPrice(name, stands[0], price, hasPrivateLounge);
+                            //add price category to database
+                            priceCategoriesTable.addPriceCategory((VipPrice) priceCategories[i]);
                             break;
                         case 2:
-                            name = "South North";
+                            name = "Peluza";
                             System.out.println("Enter price: ");
                             price = scanner.nextInt();
                             scanner.nextLine();
@@ -307,9 +314,11 @@ public class MainService {
                                 priceCategories[i] = new SouthNorthPrice(name, stands[2], price);
                             else
                                 priceCategories[i] = new SouthNorthPrice(name, stands[3], price);
+                            //add price category to database
+                            priceCategoriesTable.addPriceCategory((SouthNorthPrice) priceCategories[i]);
                             break;
                         case 3:
-                            name = "East West";
+                            name = "Tribuna";
                             System.out.println("Enter price: ");
                             price = scanner.nextInt();
                             scanner.nextLine();
@@ -320,6 +329,8 @@ public class MainService {
                                 priceCategories[i] = new EastWestPrice(name, stands[0], price);
                             else
                                 priceCategories[i] = new EastWestPrice(name, stands[1], price);
+                            //add price category to database
+                            priceCategoriesTable.addPriceCategory((EastWestPrice) priceCategories[i]);
                             break;
                     }
                 }
@@ -334,6 +345,14 @@ public class MainService {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
                 createMatch(homeTeamName, awayTeamName, stadium, dateTime, priceCategories);
+                System.out.println("Match created");
+                //get the match id from database
+                int matchId = matchesTable.getMatchId(homeTeamName, awayTeamName, stadium, dateTime);
+                //update the price categories "matchid" field from database
+                for (int i = 0; i < priceCategories.length; i++) {
+                    priceCategoriesTable.updateMatchID(priceCategories[i], matchId);
+                }
+                adminMenu();
                 break;
             case 2:
                 System.out.println("Create discount");
@@ -346,6 +365,8 @@ public class MainService {
                 Discount discount = new Discount(discountName, discountPercentage);
                 System.out.println("Discount created");
                 discountList.add(discount);
+                //add discount to database
+                discountsTable.addDiscount(discount);
                 adminMenu();
                 break;
             case 3:
