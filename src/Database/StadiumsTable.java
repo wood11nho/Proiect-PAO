@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class StandsTable {
+public class StadiumsTable {
     private Connection connection;
 
-    public StandsTable() {
+    public StadiumsTable() {
         connection = MyJDBC.getConnection();
     }
 
-    public void printStands() {
+    public void printStadiums() {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Stands");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Stadiums");
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("name"));
             }
@@ -23,10 +23,10 @@ public class StandsTable {
         }
     }
 
-    public void addStand(String name, int capacity, int remaining_capacity, boolean home_stand, int rows_number, int seats_per_row, int stadium_id) {
+    public void addStadium(String name, String city, int capacity) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO Stands (name, capacity, remainingcapacity, ishomestand, rowsnumber, seatsperrow, stadiumid) VALUES ('" + name + "', " + capacity + ", " + remaining_capacity + ", " + home_stand + ", " + rows_number + ", " + seats_per_row + ", " + stadium_id + ")");
+            statement.executeUpdate("INSERT INTO Stadiums (name, city, capacity) VALUES ('" + name + "', '" + city + "', " + capacity + ")");
         } catch (Exception e) {
             System.out.println(e);
         }

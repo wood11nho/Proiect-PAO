@@ -14,11 +14,8 @@ public class MyJDBC {
             FileInputStream input = new FileInputStream("C:\\Users\\stoic\\IdeaProjects\\Proiect-PAO\\database.properties");
             properties.load(input);
             String url = properties.getProperty("database.url");
-            System.out.println(url);
             String username = properties.getProperty("database.username");
-            System.out.println(username);
             String password = properties.getProperty("database.password");
-            System.out.println(password);
             connection = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
             System.out.println(e);

@@ -12,6 +12,7 @@ public class Match implements Comparable<Match> {
     private int sold_tickets;
     private PriceCategory[] priceCategories;
     private Discount[] discounts;
+
     private LocalDateTime date;
 
     public Match(String team1, String team2, Stadium stadium, LocalDateTime date) {

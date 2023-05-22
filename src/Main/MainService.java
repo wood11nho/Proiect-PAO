@@ -1,5 +1,9 @@
 package Main;
 
+import Database.DiscountsTable;
+import Database.PriceCategoriesTable;
+import Database.StadiumsTable;
+import Database.StandsTable;
 import MatchDetails.Match;
 import MatchDetails.Stadium;
 import MatchDetails.StadiumPlace;
@@ -27,6 +31,10 @@ public class MainService {
     static Scanner scanner = new Scanner(System.in);
     private static Map<Stadium, StadiumPlace[][][]> stadiumPlaces = new HashMap<>();
     private static User currentUser;
+    static StandsTable standsTable = new StandsTable();
+    static DiscountsTable discountsTable = new DiscountsTable();
+    static PriceCategoriesTable priceCategoriesTable = new PriceCategoriesTable();
+    static StadiumsTable stadiumsTable = new StadiumsTable();
 
     static {
         try {
@@ -50,12 +58,6 @@ public class MainService {
 
     public void addDiscount(Discount discount) {
         discountList.add(discount);
-    }
-
-    //get list of discounts
-
-    public List<Discount> getDiscountList() {
-        return discountList;
     }
 
     public void createMatch(String homeTeam, String awayTeam, Stadium stadium, LocalDateTime date, PriceCategory[] priceCategories) {
