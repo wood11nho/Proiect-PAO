@@ -1,5 +1,7 @@
 package Database;
 
+import Main.AuditService;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -18,6 +20,7 @@ public class StadiumsTable {
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("name"));
             }
+            AuditService.writeAction("Printed Stadiums");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -27,6 +30,7 @@ public class StadiumsTable {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO Stadiums (name, city, capacity) VALUES ('" + name + "', '" + city + "', " + capacity + ")");
+            AuditService.writeAction("Added Stadium to database");
         } catch (Exception e) {
             System.out.println(e);
         }

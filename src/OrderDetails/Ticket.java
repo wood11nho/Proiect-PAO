@@ -5,12 +5,15 @@ import MatchDetails.StadiumPlace;
 import Prices.PriceCategory;
 
 public class Ticket {
+    private static int nextId = 1;
+    private int id;
     private Match match;
     private StadiumPlace place;
     private PriceCategory priceCategory;
     private Discount discount;
 
     public Ticket(Match match, StadiumPlace place, PriceCategory priceCategory, Discount discount) {
+        this.id = nextId++;
         this.match = match;
         this.place = place;
         this.priceCategory = priceCategory;

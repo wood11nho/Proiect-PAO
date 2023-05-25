@@ -3,10 +3,13 @@ package Prices;
 import MatchDetails.Stand;
 
 public abstract class PriceCategory {
+    protected static int nextId = 1;
+    protected int id;
     protected String name;
     protected Stand stand;
 
     public PriceCategory(String name, Stand stand) {
+        this.id = nextId++;
         this.name = name;
         this.stand = stand;
     }

@@ -3,12 +3,15 @@ package MatchDetails;
 import java.util.Arrays;
 
 public class Stadium {
+    private static int nextId = 1;
+    private int id;
     private String name;
     private String city;
     private int capacity;
     private Stand[] stands;
 
     public Stadium(String name, String city, Stand[] stands) {
+        this.id = nextId++;
         this.name = name;
         this.city = city;
         this.stands = new Stand[0];

@@ -16,6 +16,14 @@ public class User {
     private Order[] orders;
     private boolean isAdmin;
 
+    public User(String username, String passwordHash, boolean isLogged, boolean isAdmin) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.isLogged = isLogged;
+        this.orders = new Order[0];
+        this.isAdmin = isAdmin;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.passwordHash = hashPassword(password);
@@ -95,5 +103,9 @@ public class User {
         for (Order order : orders) {
             order.afisare_comanda();
         }
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
     }
 }

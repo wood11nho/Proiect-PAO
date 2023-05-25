@@ -20,21 +20,53 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class MainService {
+    static DiscountMatchTable discountMatchTable = new DiscountMatchTable();
+    static UsersTable usersTable = new UsersTable();
     //the admin user
-    private final static User admin;
-    static List<Match> matchList = new ArrayList<>();
+    private static User admin;
     private static List<Discount> discountList = new ArrayList<>();
     private static Map<Integer, User> userList = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
     private static Map<Stadium, StadiumPlace[][][]> stadiumPlaces = new HashMap<>();
-    private static User currentUser;
     static StandsTable standsTable = new StandsTable();
     static DiscountsTable discountsTable = new DiscountsTable();
     static PriceCategoriesTable priceCategoriesTable = new PriceCategoriesTable();
     static StadiumsTable stadiumsTable = new StadiumsTable();
     static MatchesTable matchesTable = new MatchesTable();
+    private static User currentUser;
+    private static List<Match> matchList = new ArrayList<>();
 
-    static {
+    public MainService() {
+        //load all discounts from database
+        discountList = discountsTable.getAllDiscountsInAList();
+        //load all users from database
+        userList = usersTable.getAllUsersInAMap();
+//        addAdmin();
+        System.out.println("Hello, welcome to 43-3ckets! Here you can buy tickets for your favorite matches!");
+        System.out.println("Please log in or register to continue.");
+        System.out.println("1. Log in");
+        System.out.println("2. Register");
+        System.out.println("3. Exit");
+        String input = scanner.nextLine();
+        switch (input) {
+            case "1":
+                login(scanner);
+                break;
+            case "2":
+                createAccount(scanner);
+                login(scanner);
+                break;
+            case "3":
+                System.exit(0);
+                usersTable.setUnloggedUser(currentUser);
+                break;
+            default:
+                System.out.println("Invalid input!");
+                break;
+        }
+    }
+
+    static void addAdmin() {
         try {
             admin = new User(true);
             //add admin to the list
@@ -45,20 +77,19 @@ public class MainService {
                 id = uuid.hashCode();
             }
             userList.put(id, admin);
+            //add admin to the database
+            usersTable.addUser(admin);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public MainService() {
-    }
-
     public void createMatch(String homeTeam, String awayTeam, Stadium stadium, LocalDateTime date, PriceCategory[] priceCategories) {
         Match match = new Match(homeTeam, awayTeam, stadium, date);
 
         //show discounts available only if the match doesn't have the discounts set
-        if (matchList.size() != 0) {
+        if (match.getDiscounts() == null) {
             System.out.println("Discounts available: ");
 
             for (int i = 0; i < discountList.size(); i++) {
@@ -73,8 +104,7 @@ public class MainService {
             Discount[] discounts = new Discount[inputArray.length];
             for (int i = 0; i < inputArray.length; i++) {
                 discounts[i] = discountList.get(Integer.parseInt(inputArray[i]));
-                //set the field "matchid" from discounts table to the id of the match
-                discountsTable.updateMatchID(discounts[i], matchesTable.getMatchId(homeTeam, awayTeam, stadium, date));
+                discountMatchTable.addManyToMany(discounts[i], match);
             }
             match.setDiscounts(discounts);
         } else {
@@ -84,12 +114,8 @@ public class MainService {
         //set prices for the match
         match.setPrices(priceCategories);
 
-        //add match to the list
-        matchList.add(match);
-
         //add match to the database
         matchesTable.addMatch(match);
-        Collections.sort(matchList);
     }
 
     public void setStadiumPlaces(StadiumPlace[][][] places_an, Stadium stadium) {
@@ -138,16 +164,6 @@ public class MainService {
         }
 
         stadiumPlaces.put(stadium, places_an);
-        //afisare stadiumPlaces
-//        for (int i = 0; i < stadiumPlaces.get(stadium).length; i++) {
-//            for (int j = 0; j < stadiumPlaces.get(stadium)[i].length; j++) {
-//                for (int k = 0; k < stadiumPlaces.get(stadium)[i][j].length; k++) {
-//                    if (stadiumPlaces.get(stadium)[i][j][k] != null) {
-//                        System.out.println(stadiumPlaces.get(stadium)[i][j][k].getStand().getName() + " " + stadiumPlaces.get(stadium)[i][j][k].getRow() + " " + stadiumPlaces.get(stadium)[i][j][k].getSeat());
-//                    }
-//                }
-//            }
-//        }
     }
 
     public void createAccount(Scanner scanner) {
@@ -167,7 +183,7 @@ public class MainService {
         }
         userList.put(id, user);
         System.out.println("Account created!");
-
+        usersTable.addUser(user);
     }
 
     public void login(Scanner scanner) {
@@ -187,6 +203,13 @@ public class MainService {
                 System.out.println("Login successful!");
                 //set current user
                 currentUser = entry.getValue();
+                usersTable.setLoggedUser(currentUser);
+                if (currentUser.isAdmin()) {
+                    adminMenu();
+                } else {
+                    userMenu();
+                }
+                break;
             }
         }
 
@@ -205,12 +228,7 @@ public class MainService {
     }
 
     public boolean isUserAdmin() {
-        for (Map.Entry<Integer, User> entry : userList.entrySet()) {
-            if (entry.getValue().isLogged() && entry.getValue().isAdmin()) {
-                return true;
-            }
-        }
-        return false;
+        return currentUser.isAdmin();
     }
 
     //i want to know the id of the logged user
@@ -269,6 +287,8 @@ public class MainService {
                     standsTable.addStand(stands[i]);
                 }
                 Stadium stadium = new Stadium(stadiumName, stadiumCity, stands);
+                //add stadium to database
+                stadiumsTable.addStadium(stadiumName, stadiumCity, stadium.getCapacity());
                 //update stand field with stadium id
                 for (int i = 0; i < 4; i++) {
                     standsTable.updateStadiumId(stands[i], stadium);
@@ -298,7 +318,10 @@ public class MainService {
                             System.out.println("Does it have access to private lounge? (true/false)");
                             boolean hasPrivateLounge = scanner.nextBoolean();
                             scanner.nextLine();
-                            priceCategories[i] = new VipPrice(name, stands[0], price, hasPrivateLounge);
+                            if (hasPrivateLounge)
+                                priceCategories[i] = new VipPrice(name + '1', stands[0], price, hasPrivateLounge);
+                            else
+                                priceCategories[i] = new VipPrice(name + '2', stands[0], price, hasPrivateLounge);
                             //add price category to database
                             priceCategoriesTable.addPriceCategory((VipPrice) priceCategories[i]);
                             break;
@@ -348,9 +371,11 @@ public class MainService {
                 System.out.println("Match created");
                 //get the match id from database
                 int matchId = matchesTable.getMatchId(homeTeamName, awayTeamName, stadium, dateTime);
+                System.out.println("Match id: " + matchId);
                 //update the price categories "matchid" field from database
                 for (int i = 0; i < priceCategories.length; i++) {
-                    priceCategoriesTable.updateMatchID(priceCategories[i], matchId);
+                    int standId = standsTable.getStandId(priceCategories[i].getStand());
+                    priceCategoriesTable.updateMatchID(priceCategories[i], matchId, standId);
                 }
                 adminMenu();
                 break;
@@ -378,11 +403,13 @@ public class MainService {
                 break;
             case 4:
                 System.out.println("Logout");
+                usersTable.setUnloggedUser(currentUser);
                 currentUser = null;
                 loginMenu();
                 break;
             case 5:
                 System.out.println("Exit");
+                usersTable.setUnloggedUser(currentUser);
                 System.exit(0);
                 break;
 
@@ -410,6 +437,7 @@ public class MainService {
                 break;
             case 3:
                 System.out.println("Exit");
+                usersTable.setUnloggedUser(currentUser);
                 System.exit(0);
                 break;
         }
@@ -433,33 +461,21 @@ public class MainService {
                 scanner.nextLine();
 
                 System.out.println("Matches available:");
-                //sortare meciuri
-                for (int i = 0; i < matchList.size(); i++) {
-                    System.out.print(i + 1 + ". ");
-                    matchList.get(i).printMatchDetails();
-                }
+                matchesTable.printMatches();
 
                 System.out.print("Enter match number: ");
                 int matchNumber = scanner.nextInt();
                 scanner.nextLine();
 
                 System.out.println("Stands available:");
-                for (int i = 0; i < matchList.get(matchNumber - 1).getStadium().getStands().length; i++) {
-                    System.out.print(i + 1 + ". ");
-                    matchList.get(matchNumber - 1).getStadium().getStands()[i].afisare_stand();
-                }
+                standsTable.printStands(matchesTable.getStadiumIdOfMatch(matchNumber));
 
                 System.out.print("Enter stand number: ");
                 int standNumber = scanner.nextInt();
                 scanner.nextLine();
 
                 System.out.println("Price categories available for this stand:");
-                for (int i = 0; i < matchList.get(matchNumber - 1).getPrices().length; i++) {
-                    if (matchList.get(matchNumber - 1).getPrices()[i].getStand().equals(matchList.get(matchNumber - 1).getStadium().getStands()[standNumber - 1])) {
-                        System.out.print(i + 1 + ". ");
-                        matchList.get(matchNumber - 1).getPrices()[i].afisare_pret();
-                    }
-                }
+                priceCategoriesTable.printPriceCategoriesForStand(matchNumber, standNumber);
 
                 System.out.println("Choose the category of tickets you want to buy:");
                 System.out.print("Enter category number: ");
@@ -510,10 +526,7 @@ public class MainService {
                     //create ticket
 
                     System.out.println("Discounts available: ");
-                    for (int j = 0; j < matchList.get(matchNumber - 1).getDiscounts().length; j++) {
-                        System.out.print(j + 1 + ". ");
-                        matchList.get(matchNumber - 1).getDiscounts()[j].afisare_discount();
-                    }
+                    discountsTable.printDiscountsForMatch(matchNumber);
 
                     System.out.print("Enter discount number: ");
                     int discountNumber = scanner.nextInt();
@@ -553,12 +566,14 @@ public class MainService {
             case 3:
                 //logout
                 System.out.println("Logout");
+                usersTable.setUnloggedUser(currentUser);
                 currentUser = null;
                 loginMenu();
                 break;
             case 4:
                 //exit
                 System.out.println("Exit");
+                usersTable.setUnloggedUser(currentUser);
                 System.exit(0);
                 break;
         }

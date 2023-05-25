@@ -1,6 +1,8 @@
 package MatchDetails;
 
 public class StadiumPlace {
+    private static int nextId = 1;
+    private int id;
     private Stadium stadium;
     private Stand stand;
     private int row;
@@ -16,6 +18,7 @@ public class StadiumPlace {
             throw new IllegalArgumentException("Numarul locului trebuie sa fie intre 1 si " + stand.getSeats_per_row());
         }
 
+        this.id = nextId++;
         this.stadium = stadium;
         this.stand = stand;
         this.row = row;

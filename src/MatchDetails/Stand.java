@@ -1,6 +1,8 @@
 package MatchDetails;
 
 public class Stand {
+    private static int nextId = 1;
+    private int id;
     private String name;
     private int capacity;
     private int remaining_capacity;
@@ -9,6 +11,7 @@ public class Stand {
     private int seats_per_row;
 
     public Stand(String name, int capacity, boolean home_stand, int rows_number, int seats_per_row) {
+        this.id = nextId++;
         this.name = name;
         this.capacity = capacity;
         this.remaining_capacity = capacity;

@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Order {
     private static int order_count = 1;
+    private int id;
     private String order_number;
     private LocalDate order_date;
     //LISTA DE TICKETE
@@ -12,6 +13,7 @@ public class Order {
     private double total_price;
 
     public Order(Ticket[] tickets) {
+        this.id = order_count;
         this.order_number = "ORD" + String.format("%05d", order_count); // generate order number with leading zeroes
         this.order_number = order_number;
         //this.order_date should be system date

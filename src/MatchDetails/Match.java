@@ -6,6 +6,8 @@ import Prices.PriceCategory;
 import java.time.LocalDateTime;
 
 public class Match implements Comparable<Match> {
+    private static int nextId = 1;
+    private int id;
     private String team1;
     private String team2;
     private Stadium stadium;
@@ -16,6 +18,7 @@ public class Match implements Comparable<Match> {
     private LocalDateTime date;
 
     public Match(String team1, String team2, Stadium stadium, LocalDateTime date) {
+        this.id = nextId++;
         this.team1 = team1;
         this.team2 = team2;
         this.stadium = stadium;
