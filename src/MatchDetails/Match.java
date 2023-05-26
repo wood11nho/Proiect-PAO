@@ -17,6 +17,15 @@ public class Match implements Comparable<Match> {
 
     private LocalDateTime date;
 
+    public Match(int id, String team1, String team2, Stadium stadium, int sold_tickets, LocalDateTime date) {
+        this.id = id;
+        this.team1 = team1;
+        this.team2 = team2;
+        this.stadium = stadium;
+        this.sold_tickets = sold_tickets;
+        this.date = date;
+    }
+
     public Match(String team1, String team2, Stadium stadium, LocalDateTime date) {
         this.id = nextId++;
         this.team1 = team1;
@@ -86,6 +95,14 @@ public class Match implements Comparable<Match> {
 
     public void printMatchDetails() {
         System.out.println("Meciul dintre " + this.team1 + " si " + this.team2 + " se va juca pe stadionul " + this.stadium.getName() + " din orasul " + this.stadium.getCity());
+        System.out.println("Preturile sunt: ");
+        for (int i = 1; i <= priceCategories.length - 1; i++) {
+            System.out.println(priceCategories[i].getId() + priceCategories[i].getName() + " " + priceCategories[i].getPrice());
+        }
+        System.out.println("Discounturile sunt: ");
+        for (int i = 0; i < discounts.length; i++) {
+            System.out.println(discounts[i].getName() + " " + discounts[i].getDiscount());
+        }
     }
 
     @Override

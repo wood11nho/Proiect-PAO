@@ -14,6 +14,10 @@ public abstract class PriceCategory {
         this.stand = stand;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

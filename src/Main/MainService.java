@@ -41,6 +41,8 @@ public class MainService {
         discountList = discountsTable.getAllDiscountsInAList();
         //load all users from database
         userList = usersTable.getAllUsersInAMap();
+        //load all matches from database
+        matchList = matchesTable.getAllMatchesInAList();
 //        addAdmin();
         System.out.println("Hello, welcome to 43-3ckets! Here you can buy tickets for your favorite matches!");
         System.out.println("Please log in or register to continue.");
@@ -246,8 +248,9 @@ public class MainService {
         System.out.println("1. Create match");
         System.out.println("2. Create discount");
         System.out.println("3. See available discounts");
-        System.out.println("4. Logout");
-        System.out.println("5. Exit");
+        System.out.println("4. Add discount to match");
+        System.out.println("5. Logout");
+        System.out.println("6. Exit");
 
         int input = scanner.nextInt();
         scanner.nextLine();
@@ -375,6 +378,7 @@ public class MainService {
                 //update the price categories "matchid" field from database
                 for (int i = 0; i < priceCategories.length; i++) {
                     int standId = standsTable.getStandId(priceCategories[i].getStand());
+                    System.out.println(standId);
                     priceCategoriesTable.updateMatchID(priceCategories[i], matchId, standId);
                 }
                 adminMenu();
@@ -402,12 +406,28 @@ public class MainService {
                 adminMenu();
                 break;
             case 4:
+                System.out.println("Add discounts to match");
+                System.out.println("Select match from the following list: ");
+                matchesTable.printMatches();
+                System.out.println("Enter match id: ");
+                int matchSelected = scanner.nextInt();
+                scanner.nextLine();
+                System.out.println("Select discount from the following list: ");
+                discountsTable.printDiscounts();
+                System.out.println("Enter discount id: ");
+                int discountSelected = scanner.nextInt();
+                scanner.nextLine();
+                //add discount to match in database
+                discountMatchTable.addManyToMany(discountSelected, matchSelected);
+                adminMenu();
+                break;
+            case 5:
                 System.out.println("Logout");
                 usersTable.setUnloggedUser(currentUser);
                 currentUser = null;
                 loginMenu();
                 break;
-            case 5:
+            case 6:
                 System.out.println("Exit");
                 usersTable.setUnloggedUser(currentUser);
                 System.exit(0);
@@ -532,7 +552,7 @@ public class MainService {
                     int discountNumber = scanner.nextInt();
 
                     StadiumPlace stadiumPlace = new StadiumPlace(matchList.get(matchNumber - 1).getStadium(), matchList.get(matchNumber - 1).getStadium().getStands()[standNumber - 1], rowNumber, seatNumber);
-                    tickets[i] = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber - 1], matchList.get(matchNumber - 1).getDiscounts()[discountNumber - 1]);
+                    tickets[i] = new Ticket(matchList.get(matchNumber - 1), stadiumPlace, matchList.get(matchNumber - 1).getPrices()[categoryNumber], matchList.get(matchNumber - 1).getDiscounts()[discountNumber - 1]);
                     //il ocupam si in StadiumPlaces
                     for (Map.Entry<Stadium, StadiumPlace[][][]> entry : stadiumPlaces.entrySet()) {
                         if (entry.getKey().equals(matchList.get(matchNumber - 1).getStadium())) {

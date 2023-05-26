@@ -15,7 +15,8 @@ public class DiscountMatchTable {
 
     public void addManyToMany(int discountId, int matchId) {
         try {
-            connection.createStatement().executeUpdate("INSERT INTO DiscountMatch (discountId, matchId) VALUES (" + discountId + ", " + matchId + ")");
+            connection.createStatement().executeUpdate("INSERT INTO discounts_matches (discountId, matchId) VALUES (" + discountId + ", " + matchId + ")");
+            AuditService.writeAction("Added DiscountMatch to database");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -28,7 +29,7 @@ public class DiscountMatchTable {
             //get id of match from database
             int matchId = new MatchesTable().getMatchId(match);
             //add to database
-            connection.createStatement().executeUpdate("INSERT INTO DiscountMatch (discountId, matchId) VALUES (" + discountId + ", " + matchId + ")");
+            connection.createStatement().executeUpdate("INSERT INTO discounts_matches (discountId, matchId) VALUES (" + discountId + ", " + matchId + ")");
             AuditService.writeAction("Added DiscountMatch to database");
         } catch (Exception e) {
             System.out.println(e);

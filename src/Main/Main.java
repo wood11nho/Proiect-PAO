@@ -7,7 +7,7 @@ import static Main.MainService.usersTable;
 public class Main {
     public static void main(String[] args) {
 
-        Runtime.getRuntime().addShutdownHook(new Thread(Main::cleanupDatabase));
+//        Runtime.getRuntime().addShutdownHook(new Thread(Main::cleanupDatabase));
         Runtime.getRuntime().addShutdownHook(new Thread(Main::closeConnections));
         MainService mainService = new MainService();
     }

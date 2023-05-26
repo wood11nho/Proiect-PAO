@@ -65,9 +65,9 @@ public class DiscountsTable {
     public void printDiscountsForMatch(int matchId) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Discounts WHERE DiscountID IN (SELECT DiscountID FROM DiscountMatch WHERE MatchID = " + matchId + ")");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Discounts WHERE DiscountID IN (SELECT DiscountID FROM Discounts_Matches WHERE MatchID = " + matchId + ")");
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("name" + " " + resultSet.getDouble("discount")));
+                System.out.println(resultSet.getString("name") + " " + resultSet.getDouble("discount"));
             }
             AuditService.writeAction("Printed Discounts for Match");
         } catch (Exception e) {

@@ -97,3 +97,524 @@ Added User to database, 2023/05/26 02:00:40
 Got all Discounts from database, 2023/05/26 02:01:07
 Loaded Users from database, 2023/05/26 02:01:07
 Added User to database, 2023/05/26 02:01:07
+Got all Discounts from database, 2023/05/26 02:03:47
+Loaded Users from database, 2023/05/26 02:03:47
+Added User to database, 2023/05/26 02:04:10
+Updated User as logged in the database, 2023/05/26 02:04:18
+Updated User as logged out in the database, 2023/05/26 02:04:23
+Updated User as logged in the database, 2023/05/26 02:04:29
+Added Discount to database, 2023/05/26 02:04:46
+Added Discount to database, 2023/05/26 02:04:53
+Added Discount to database, 2023/05/26 02:05:00
+Added Discount to database, 2023/05/26 02:05:08
+Added Stand to database, 2023/05/26 02:05:31
+Added Stand to database, 2023/05/26 02:05:38
+Added Stand to database, 2023/05/26 02:05:50
+Added Stand to database, 2023/05/26 02:06:02
+Added Stadium to database, 2023/05/26 02:06:02
+Updated stadium id for stand Tribuna 1, 2023/05/26 02:06:02
+Updated stadium id for stand Tribuna 2, 2023/05/26 02:06:02
+Updated stadium id for stand Peluza Catalin Hildan, 2023/05/26 02:06:02
+Updated stadium id for stand Peluza Oaspeti, 2023/05/26 02:06:02
+Added PriceCategory to database, 2023/05/26 02:06:09
+Added VIPPrice to database, 2023/05/26 02:06:09
+Added PriceCategory to database, 2023/05/26 02:06:14
+Added VIPPrice to database, 2023/05/26 02:06:14
+Added PriceCategory to database, 2023/05/26 02:06:18
+Added SouthNorthPrice to database, 2023/05/26 02:06:18
+Added PriceCategory to database, 2023/05/26 02:06:24
+Added SouthNorthPrice to database, 2023/05/26 02:06:24
+Added PriceCategory to database, 2023/05/26 02:06:33
+Added EastWestPrice to database, 2023/05/26 02:06:33
+Added PriceCategory to database, 2023/05/26 02:06:38
+Added EastWestPrice to database, 2023/05/26 02:06:38
+Added Match to database, 2023/05/26 02:06:54
+Got MatchID from database, 2023/05/26 02:06:54
+Got stand id for stand Tribuna 1, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Got stand id for stand Tribuna 1, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Got stand id for stand Peluza Catalin Hildan, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Got stand id for stand Peluza Oaspeti, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Got stand id for stand Tribuna 1, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Got stand id for stand Tribuna 2, 2023/05/26 02:06:54
+Updated match id of PriceCategory in database, 2023/05/26 02:06:54
+Updated User as logged out in the database, 2023/05/26 02:07:00
+Updated User as logged in the database, 2023/05/26 02:07:03
+Printed Matches, 2023/05/26 02:07:07
+Got StadiumID of match from database, 2023/05/26 02:07:12
+Printed Stands from stadium with id 1, 2023/05/26 02:07:12
+Printed PriceCategories for stand from database, 2023/05/26 02:07:21
+Updated all Users as logged out in the database, 2023/05/26 02:08:58
+Got all Discounts from database, 2023/05/26 02:14:22
+Loaded Users from database, 2023/05/26 02:14:22
+Added User to database, 2023/05/26 02:14:22
+Updated all Users as logged out in the database, 2023/05/26 02:14:30
+Got all Discounts from database, 2023/05/26 02:14:55
+Loaded Users from database, 2023/05/26 02:14:55
+Added User to database, 2023/05/26 02:14:59
+Updated User as logged in the database, 2023/05/26 02:15:04
+Added Discount to database, 2023/05/26 02:15:10
+Added Discount to database, 2023/05/26 02:15:15
+Added Discount to database, 2023/05/26 02:15:26
+Added Discount to database, 2023/05/26 02:16:10
+Added Stand to database, 2023/05/26 02:16:40
+Added Stand to database, 2023/05/26 02:16:46
+Added Stand to database, 2023/05/26 02:16:57
+Added Stand to database, 2023/05/26 02:17:06
+Added Stadium to database, 2023/05/26 02:17:06
+Updated stadium id for stand Tribuna 1, 2023/05/26 02:17:06
+Updated stadium id for stand Tribuna 2, 2023/05/26 02:17:06
+Updated stadium id for stand Peluza Catalin Hildan, 2023/05/26 02:17:06
+Updated stadium id for stand Peluza Oaspeti, 2023/05/26 02:17:06
+Added PriceCategory to database, 2023/05/26 02:17:16
+Added VIPPrice to database, 2023/05/26 02:17:16
+Added PriceCategory to database, 2023/05/26 02:17:21
+Added VIPPrice to database, 2023/05/26 02:17:21
+Added PriceCategory to database, 2023/05/26 02:17:26
+Added SouthNorthPrice to database, 2023/05/26 02:17:26
+Added PriceCategory to database, 2023/05/26 02:17:32
+Added SouthNorthPrice to database, 2023/05/26 02:17:32
+Added PriceCategory to database, 2023/05/26 02:17:36
+Added EastWestPrice to database, 2023/05/26 02:17:36
+Added PriceCategory to database, 2023/05/26 02:17:44
+Added EastWestPrice to database, 2023/05/26 02:17:44
+Added Match to database, 2023/05/26 02:18:13
+Got MatchID from database, 2023/05/26 02:18:13
+Got stand id for stand Tribuna 1, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Got stand id for stand Tribuna 1, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Got stand id for stand Peluza Catalin Hildan, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Got stand id for stand Peluza Oaspeti, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Got stand id for stand Tribuna 1, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Got stand id for stand Tribuna 2, 2023/05/26 02:18:13
+Updated match id for PriceCategory, 2023/05/26 02:18:13
+Updated User as logged out in the database, 2023/05/26 02:18:39
+Updated User as logged in the database, 2023/05/26 02:18:50
+Printed Matches, 2023/05/26 02:18:54
+Got StadiumID of match from database, 2023/05/26 02:18:55
+Printed Stands from stadium with id 1, 2023/05/26 02:18:55
+Printed PriceCategories for stand from database, 2023/05/26 02:18:57
+Updated all Users as logged out in the database, 2023/05/26 02:19:06
+Got all Discounts from database, 2023/05/26 02:29:25
+Loaded Users from database, 2023/05/26 02:29:25
+Updated all Users as logged out in the database, 2023/05/26 02:29:37
+Got all Discounts from database, 2023/05/26 02:30:46
+Loaded Users from database, 2023/05/26 02:30:46
+Got all matches from database, 2023/05/26 02:30:46
+Updated User as logged in the database, 2023/05/26 02:30:52
+Printed Matches, 2023/05/26 02:31:17
+Got StadiumID of match from database, 2023/05/26 02:31:29
+Printed Stands from stadium with id 1, 2023/05/26 02:31:29
+Printed PriceCategories for stand from database, 2023/05/26 02:31:31
+Updated all Users as logged out in the database, 2023/05/26 02:32:52
+Got all Discounts from database, 2023/05/26 02:33:54
+Loaded Users from database, 2023/05/26 02:33:54
+Got all matches from database, 2023/05/26 02:33:54
+Updated User as logged in the database, 2023/05/26 02:34:30
+Printed Matches, 2023/05/26 02:35:17
+Got StadiumID of match from database, 2023/05/26 02:35:18
+Printed Stands from stadium with id 1, 2023/05/26 02:35:18
+Printed PriceCategories for stand from database, 2023/05/26 02:35:19
+Printed Discounts for Match, 2023/05/26 02:35:23
+Updated all Users as logged out in the database, 2023/05/26 02:35:32
+Got all Discounts from database, 2023/05/26 02:39:51
+Loaded Users from database, 2023/05/26 02:39:51
+Got all matches from database, 2023/05/26 02:39:51
+Updated User as logged in the database, 2023/05/26 02:39:55
+Updated all Users as logged out in the database, 2023/05/26 02:40:01
+Got all Discounts from database, 2023/05/26 02:40:41
+Loaded Users from database, 2023/05/26 02:40:41
+Got all matches from database, 2023/05/26 02:40:41
+Updated User as logged in the database, 2023/05/26 02:41:00
+Printed Matches, 2023/05/26 02:41:01
+Printed Discounts, 2023/05/26 02:41:03
+Updated all Users as logged out in the database, 2023/05/26 02:41:54
+Got all Discounts from database, 2023/05/26 02:42:07
+Loaded Users from database, 2023/05/26 02:42:07
+Got all matches from database, 2023/05/26 02:42:07
+Updated User as logged in the database, 2023/05/26 02:42:16
+Printed Matches, 2023/05/26 02:42:19
+Printed Discounts, 2023/05/26 02:42:20
+Printed Matches, 2023/05/26 02:42:36
+Printed Discounts, 2023/05/26 02:42:37
+Printed Matches, 2023/05/26 02:42:40
+Printed Discounts, 2023/05/26 02:42:41
+Printed Matches, 2023/05/26 02:42:44
+Printed Discounts, 2023/05/26 02:42:45
+Updated all Users as logged out in the database, 2023/05/26 02:42:53
+Got all Discounts from database, 2023/05/26 02:44:16
+Loaded Users from database, 2023/05/26 02:44:16
+Got all matches from database, 2023/05/26 02:44:16
+Updated User as logged in the database, 2023/05/26 02:44:20
+Printed Matches, 2023/05/26 02:44:24
+Got StadiumID of match from database, 2023/05/26 02:44:25
+Printed Stands from stadium with id 1, 2023/05/26 02:44:25
+Printed PriceCategories for stand from database, 2023/05/26 02:44:26
+Updated all Users as logged out in the database, 2023/05/26 02:45:41
+Got all Discounts from database, 2023/05/26 02:45:48
+Loaded Users from database, 2023/05/26 02:45:48
+Got all matches from database, 2023/05/26 02:45:48
+Updated User as logged in the database, 2023/05/26 02:45:50
+Printed Matches, 2023/05/26 02:45:52
+Got StadiumID of match from database, 2023/05/26 02:45:52
+Printed Stands from stadium with id 1, 2023/05/26 02:45:52
+Printed PriceCategories for stand from database, 2023/05/26 02:45:55
+Printed Discounts for Match, 2023/05/26 02:45:59
+Updated all Users as logged out in the database, 2023/05/26 02:46:03
+Got all Discounts from database, 2023/05/26 02:58:01
+Loaded Users from database, 2023/05/26 02:58:01
+Updated all Users as logged out in the database, 2023/05/26 02:58:05
+Got all Discounts from database, 2023/05/26 03:00:55
+Loaded Users from database, 2023/05/26 03:00:55
+Updated all Users as logged out in the database, 2023/05/26 03:01:00
+Got all Discounts from database, 2023/05/26 03:02:38
+Loaded Users from database, 2023/05/26 03:02:38
+Updated all Users as logged out in the database, 2023/05/26 03:02:44
+Got all Discounts from database, 2023/05/26 03:03:03
+Loaded Users from database, 2023/05/26 03:03:03
+Updated all Users as logged out in the database, 2023/05/26 03:03:04
+Got all Discounts from database, 2023/05/26 03:04:24
+Loaded Users from database, 2023/05/26 03:04:24
+Updated all Users as logged out in the database, 2023/05/26 03:04:29
+Got all Discounts from database, 2023/05/26 03:06:10
+Loaded Users from database, 2023/05/26 03:06:10
+Updated User as logged in the database, 2023/05/26 03:06:27
+Printed Matches, 2023/05/26 03:06:28
+Got StadiumID of match from database, 2023/05/26 03:06:29
+Printed Stands from stadium with id 1, 2023/05/26 03:06:29
+Printed PriceCategories for stand from database, 2023/05/26 03:06:30
+Printed Discounts for Match, 2023/05/26 03:06:33
+Updated all Users as logged out in the database, 2023/05/26 03:06:35
+Got all Discounts from database, 2023/05/26 03:11:43
+Loaded Users from database, 2023/05/26 03:11:43
+Updated all Users as logged out in the database, 2023/05/26 03:11:46
+Got all Discounts from database, 2023/05/26 03:13:10
+Loaded Users from database, 2023/05/26 03:13:10
+Updated all Users as logged out in the database, 2023/05/26 03:13:22
+Got all Discounts from database, 2023/05/26 03:13:29
+Loaded Users from database, 2023/05/26 03:13:29
+Updated all Users as logged out in the database, 2023/05/26 03:13:42
+Got all Discounts from database, 2023/05/26 03:13:49
+Loaded Users from database, 2023/05/26 03:13:49
+Updated all Users as logged out in the database, 2023/05/26 03:13:52
+Got all Discounts from database, 2023/05/26 03:14:07
+Loaded Users from database, 2023/05/26 03:14:07
+Updated all Users as logged out in the database, 2023/05/26 03:14:13
+Got all Discounts from database, 2023/05/26 03:19:50
+Loaded Users from database, 2023/05/26 03:19:50
+Got all matches from database, 2023/05/26 03:19:50
+Updated User as logged in the database, 2023/05/26 03:19:58
+Printed Matches, 2023/05/26 03:20:01
+Got StadiumID of match from database, 2023/05/26 03:20:04
+Printed Stands from stadium with id 1, 2023/05/26 03:20:04
+Printed PriceCategories for stand from database, 2023/05/26 03:20:06
+Printed Discounts for Match, 2023/05/26 03:20:11
+Updated all Users as logged out in the database, 2023/05/26 03:20:12
+Got all Discounts from database, 2023/05/26 03:21:14
+Loaded Users from database, 2023/05/26 03:21:14
+Got all matches from database, 2023/05/26 03:21:14
+Updated User as logged in the database, 2023/05/26 03:21:18
+Printed Matches, 2023/05/26 03:21:20
+Got StadiumID of match from database, 2023/05/26 03:21:21
+Printed Stands from stadium with id 1, 2023/05/26 03:21:21
+Printed PriceCategories for stand from database, 2023/05/26 03:21:22
+Printed Discounts for Match, 2023/05/26 03:21:26
+Updated User as logged out in the database, 2023/05/26 03:22:13
+Updated all Users as logged out in the database, 2023/05/26 03:22:13
+Got all Discounts from database, 2023/05/26 03:25:26
+Loaded Users from database, 2023/05/26 03:25:26
+Updated all Users as logged out in the database, 2023/05/26 03:25:38
+Got all Discounts from database, 2023/05/26 03:25:45
+Loaded Users from database, 2023/05/26 03:25:45
+Updated all Users as logged out in the database, 2023/05/26 03:25:57
+Got all Discounts from database, 2023/05/26 03:26:03
+Loaded Users from database, 2023/05/26 03:26:03
+Updated all Users as logged out in the database, 2023/05/26 03:26:58
+Got all Discounts from database, 2023/05/26 03:27:04
+Loaded Users from database, 2023/05/26 03:27:04
+Got all matches from database, 2023/05/26 03:27:04
+Updated User as logged in the database, 2023/05/26 03:27:12
+Printed Matches, 2023/05/26 03:27:15
+Got StadiumID of match from database, 2023/05/26 03:27:15
+Printed Stands from stadium with id 1, 2023/05/26 03:27:15
+Printed PriceCategories for stand from database, 2023/05/26 03:27:16
+Printed Discounts for Match, 2023/05/26 03:27:20
+Updated all Users as logged out in the database, 2023/05/26 03:27:22
+Got all Discounts from database, 2023/05/26 03:28:38
+Loaded Users from database, 2023/05/26 03:28:38
+Got all matches from database, 2023/05/26 03:28:38
+Updated User as logged in the database, 2023/05/26 03:28:42
+Printed Matches, 2023/05/26 03:28:44
+Got StadiumID of match from database, 2023/05/26 03:28:45
+Printed Stands from stadium with id 1, 2023/05/26 03:28:45
+Printed PriceCategories for stand from database, 2023/05/26 03:28:49
+Printed Discounts for Match, 2023/05/26 03:28:54
+Updated all Users as logged out in the database, 2023/05/26 03:30:54
+Got all Discounts from database, 2023/05/26 03:31:01
+Loaded Users from database, 2023/05/26 03:31:01
+Got all matches from database, 2023/05/26 03:31:01
+Updated User as logged in the database, 2023/05/26 03:31:05
+Printed Matches, 2023/05/26 03:31:07
+Got StadiumID of match from database, 2023/05/26 03:31:08
+Printed Stands from stadium with id 1, 2023/05/26 03:31:08
+Printed PriceCategories for stand from database, 2023/05/26 03:31:09
+Printed Discounts for Match, 2023/05/26 03:31:13
+Updated all Users as logged out in the database, 2023/05/26 03:34:21
+Got all Discounts from database, 2023/05/26 03:35:54
+Loaded Users from database, 2023/05/26 03:35:54
+Got all matches from database, 2023/05/26 03:35:54
+Updated User as logged in the database, 2023/05/26 03:35:57
+Printed Matches, 2023/05/26 03:36:03
+Got StadiumID of match from database, 2023/05/26 03:36:04
+Printed Stands from stadium with id 1, 2023/05/26 03:36:04
+Printed PriceCategories for stand from database, 2023/05/26 03:36:05
+Printed Discounts for Match, 2023/05/26 03:36:09
+Updated all Users as logged out in the database, 2023/05/26 03:41:07
+Got all Discounts from database, 2023/05/26 03:41:13
+Loaded Users from database, 2023/05/26 03:41:13
+Got all matches from database, 2023/05/26 03:41:13
+Updated User as logged in the database, 2023/05/26 03:41:17
+Printed Matches, 2023/05/26 03:41:19
+Got StadiumID of match from database, 2023/05/26 03:41:19
+Printed Stands from stadium with id 1, 2023/05/26 03:41:19
+Printed PriceCategories for stand from database, 2023/05/26 03:41:21
+Printed Discounts for Match, 2023/05/26 03:41:29
+Updated all Users as logged out in the database, 2023/05/26 03:41:44
+Got all Discounts from database, 2023/05/26 03:41:47
+Loaded Users from database, 2023/05/26 03:41:47
+Got all matches from database, 2023/05/26 03:41:47
+Updated all Users as logged out in the database, 2023/05/26 03:41:51
+Got all Discounts from database, 2023/05/26 03:41:57
+Loaded Users from database, 2023/05/26 03:41:57
+Got all matches from database, 2023/05/26 03:41:57
+Updated User as logged in the database, 2023/05/26 03:41:59
+Printed Matches, 2023/05/26 03:42:01
+Got StadiumID of match from database, 2023/05/26 03:42:02
+Printed Stands from stadium with id 1, 2023/05/26 03:42:02
+Printed PriceCategories for stand from database, 2023/05/26 03:42:04
+Printed Discounts for Match, 2023/05/26 03:42:07
+Updated all Users as logged out in the database, 2023/05/26 03:44:38
+Got all Discounts from database, 2023/05/26 03:44:43
+Loaded Users from database, 2023/05/26 03:44:43
+Got all matches from database, 2023/05/26 03:44:43
+Updated User as logged in the database, 2023/05/26 03:44:49
+Printed Matches, 2023/05/26 03:44:50
+Got StadiumID of match from database, 2023/05/26 03:44:51
+Printed Stands from stadium with id 1, 2023/05/26 03:44:51
+Printed PriceCategories for stand from database, 2023/05/26 03:44:53
+Printed Discounts for Match, 2023/05/26 03:45:01
+Updated all Users as logged out in the database, 2023/05/26 03:45:02
+Got all Discounts from database, 2023/05/26 03:48:05
+Loaded Users from database, 2023/05/26 03:48:05
+Got all matches from database, 2023/05/26 03:48:06
+Updated User as logged in the database, 2023/05/26 03:48:09
+Printed Matches, 2023/05/26 03:48:11
+Got StadiumID of match from database, 2023/05/26 03:48:12
+Printed Stands from stadium with id 1, 2023/05/26 03:48:12
+Printed PriceCategories for stand from database, 2023/05/26 03:48:14
+Printed Discounts for Match, 2023/05/26 03:48:18
+Updated all Users as logged out in the database, 2023/05/26 03:51:18
+Got all Discounts from database, 2023/05/26 03:51:23
+Loaded Users from database, 2023/05/26 03:51:23
+Got all matches from database, 2023/05/26 03:51:23
+Updated all Users as logged out in the database, 2023/05/26 03:53:08
+Got all Discounts from database, 2023/05/26 03:53:15
+Loaded Users from database, 2023/05/26 03:53:15
+Got all matches from database, 2023/05/26 03:53:15
+Updated all Users as logged out in the database, 2023/05/26 03:53:52
+Got all Discounts from database, 2023/05/26 03:53:57
+Loaded Users from database, 2023/05/26 03:53:57
+Got all matches from database, 2023/05/26 03:53:57
+Updated all Users as logged out in the database, 2023/05/26 03:54:51
+Got all Discounts from database, 2023/05/26 03:55:23
+Loaded Users from database, 2023/05/26 03:55:23
+Got all matches from database, 2023/05/26 03:55:23
+Updated all Users as logged out in the database, 2023/05/26 03:55:42
+Got all Discounts from database, 2023/05/26 03:55:47
+Loaded Users from database, 2023/05/26 03:55:47
+Got all matches from database, 2023/05/26 03:55:48
+Updated all Users as logged out in the database, 2023/05/26 03:58:49
+Got all Discounts from database, 2023/05/26 03:58:55
+Loaded Users from database, 2023/05/26 03:58:55
+Got all matches from database, 2023/05/26 03:58:55
+Updated all Users as logged out in the database, 2023/05/26 03:59:17
+Got all Discounts from database, 2023/05/26 03:59:22
+Loaded Users from database, 2023/05/26 03:59:22
+Got all matches from database, 2023/05/26 03:59:22
+Updated all Users as logged out in the database, 2023/05/26 03:59:35
+Got all Discounts from database, 2023/05/26 03:59:55
+Loaded Users from database, 2023/05/26 03:59:56
+Got all matches from database, 2023/05/26 03:59:56
+Updated User as logged in the database, 2023/05/26 04:00:00
+Printed Matches, 2023/05/26 04:00:05
+Got StadiumID of match from database, 2023/05/26 04:00:06
+Printed Stands from stadium with id 1, 2023/05/26 04:00:06
+Printed PriceCategories for stand from database, 2023/05/26 04:00:10
+Printed Discounts for Match, 2023/05/26 04:00:16
+Updated all Users as logged out in the database, 2023/05/26 04:00:38
+Got all Discounts from database, 2023/05/26 04:00:42
+Loaded Users from database, 2023/05/26 04:00:42
+Got all matches from database, 2023/05/26 04:00:42
+Updated User as logged in the database, 2023/05/26 04:00:48
+Printed Matches, 2023/05/26 04:00:49
+Got StadiumID of match from database, 2023/05/26 04:00:50
+Printed Stands from stadium with id 1, 2023/05/26 04:00:50
+Printed PriceCategories for stand from database, 2023/05/26 04:00:51
+Printed Discounts for Match, 2023/05/26 04:00:59
+Updated all Users as logged out in the database, 2023/05/26 04:01:16
+Got all Discounts from database, 2023/05/26 04:02:26
+Loaded Users from database, 2023/05/26 04:02:26
+Got all matches from database, 2023/05/26 04:02:26
+Updated User as logged in the database, 2023/05/26 04:02:33
+Printed Matches, 2023/05/26 04:02:35
+Got StadiumID of match from database, 2023/05/26 04:02:36
+Printed Stands from stadium with id 1, 2023/05/26 04:02:36
+Printed PriceCategories for stand from database, 2023/05/26 04:02:40
+Updated all Users as logged out in the database, 2023/05/26 04:03:10
+Got all Discounts from database, 2023/05/26 04:03:51
+Loaded Users from database, 2023/05/26 04:03:51
+Got all matches from database, 2023/05/26 04:03:51
+Updated all Users as logged out in the database, 2023/05/26 04:04:08
+Got all Discounts from database, 2023/05/26 04:07:08
+Loaded Users from database, 2023/05/26 04:07:08
+Got all matches from database, 2023/05/26 04:07:08
+Updated all Users as logged out in the database, 2023/05/26 04:07:11
+Got all Discounts from database, 2023/05/26 04:07:43
+Loaded Users from database, 2023/05/26 04:07:43
+Got all matches from database, 2023/05/26 04:07:43
+Updated all Users as logged out in the database, 2023/05/26 04:11:12
+Got all Discounts from database, 2023/05/26 04:11:18
+Loaded Users from database, 2023/05/26 04:11:18
+Updated all Users as logged out in the database, 2023/05/26 04:16:09
+Got all Discounts from database, 2023/05/26 04:16:14
+Loaded Users from database, 2023/05/26 04:16:14
+Got all matches from database, 2023/05/26 04:16:14
+Updated User as logged in the database, 2023/05/26 04:17:27
+Printed Matches, 2023/05/26 04:17:29
+Got StadiumID of match from database, 2023/05/26 04:17:30
+Printed Stands from stadium with id 1, 2023/05/26 04:17:30
+Printed PriceCategories for stand from database, 2023/05/26 04:17:31
+Updated all Users as logged out in the database, 2023/05/26 04:23:00
+Got all Discounts from database, 2023/05/26 14:38:16
+Loaded Users from database, 2023/05/26 14:38:16
+Updated all Users as logged out in the database, 2023/05/26 14:38:21
+Got all Discounts from database, 2023/05/26 14:42:36
+Loaded Users from database, 2023/05/26 14:42:36
+Got all matches from database, 2023/05/26 14:42:36
+Updated all Users as logged out in the database, 2023/05/26 15:08:57
+Got all Discounts from database, 2023/05/26 15:09:37
+Loaded Users from database, 2023/05/26 15:09:37
+Got all matches from database, 2023/05/26 15:09:37
+Updated all Users as logged out in the database, 2023/05/26 15:09:41
+Got all Discounts from database, 2023/05/26 15:10:40
+Loaded Users from database, 2023/05/26 15:10:40
+Got all matches from database, 2023/05/26 15:10:40
+Updated all Users as logged out in the database, 2023/05/26 15:11:38
+Got all Discounts from database, 2023/05/26 15:11:43
+Loaded Users from database, 2023/05/26 15:11:43
+Got all matches from database, 2023/05/26 15:11:43
+Updated all Users as logged out in the database, 2023/05/26 15:15:37
+Got all Discounts from database, 2023/05/26 15:15:41
+Loaded Users from database, 2023/05/26 15:15:41
+Got all matches from database, 2023/05/26 15:15:41
+Updated all Users as logged out in the database, 2023/05/26 15:16:05
+Got all Discounts from database, 2023/05/26 15:16:17
+Loaded Users from database, 2023/05/26 15:16:17
+Got all matches from database, 2023/05/26 15:16:18
+Updated User as logged in the database, 2023/05/26 15:16:27
+Printed Matches, 2023/05/26 15:16:31
+Got StadiumID of match from database, 2023/05/26 15:16:33
+Printed Stands from stadium with id 1, 2023/05/26 15:16:33
+Printed PriceCategories for stand from database, 2023/05/26 15:16:39
+Printed Discounts for Match, 2023/05/26 15:16:51
+Updated all Users as logged out in the database, 2023/05/26 15:18:01
+Got all Discounts from database, 2023/05/26 15:18:07
+Loaded Users from database, 2023/05/26 15:18:07
+Got all matches from database, 2023/05/26 15:18:07
+Updated all Users as logged out in the database, 2023/05/26 15:18:41
+Got all Discounts from database, 2023/05/26 15:18:47
+Loaded Users from database, 2023/05/26 15:18:47
+Got all matches from database, 2023/05/26 15:18:47
+Updated all Users as logged out in the database, 2023/05/26 15:19:04
+Got all Discounts from database, 2023/05/26 15:19:09
+Loaded Users from database, 2023/05/26 15:19:09
+Got all matches from database, 2023/05/26 15:19:09
+Updated User as logged in the database, 2023/05/26 15:19:21
+Printed Matches, 2023/05/26 15:19:23
+Got StadiumID of match from database, 2023/05/26 15:19:24
+Printed Stands from stadium with id 1, 2023/05/26 15:19:24
+Printed PriceCategories for stand from database, 2023/05/26 15:19:26
+Printed Discounts for Match, 2023/05/26 15:19:30
+Updated all Users as logged out in the database, 2023/05/26 15:21:17
+Got all Discounts from database, 2023/05/26 15:21:23
+Loaded Users from database, 2023/05/26 15:21:23
+Got all matches from database, 2023/05/26 15:21:23
+Updated User as logged in the database, 2023/05/26 15:21:30
+Printed Matches, 2023/05/26 15:21:32
+Got StadiumID of match from database, 2023/05/26 15:21:33
+Printed Stands from stadium with id 1, 2023/05/26 15:21:33
+Printed PriceCategories for stand from database, 2023/05/26 15:21:35
+Printed Discounts for Match, 2023/05/26 15:21:41
+Updated all Users as logged out in the database, 2023/05/26 15:21:55
+Got all Discounts from database, 2023/05/26 15:22:00
+Loaded Users from database, 2023/05/26 15:22:00
+Got all matches from database, 2023/05/26 15:22:01
+Updated User as logged in the database, 2023/05/26 15:22:05
+Printed Matches, 2023/05/26 15:22:08
+Got StadiumID of match from database, 2023/05/26 15:22:09
+Printed Stands from stadium with id 1, 2023/05/26 15:22:09
+Printed PriceCategories for stand from database, 2023/05/26 15:22:10
+Printed Discounts for Match, 2023/05/26 15:22:13
+Updated all Users as logged out in the database, 2023/05/26 15:23:37
+Got all Discounts from database, 2023/05/26 15:23:41
+Loaded Users from database, 2023/05/26 15:23:41
+Got all matches from database, 2023/05/26 15:23:41
+Updated User as logged in the database, 2023/05/26 15:23:45
+Printed Matches, 2023/05/26 15:23:47
+Got StadiumID of match from database, 2023/05/26 15:23:48
+Printed Stands from stadium with id 1, 2023/05/26 15:23:48
+Printed PriceCategories for stand from database, 2023/05/26 15:23:50
+Printed Discounts for Match, 2023/05/26 15:23:54
+Updated all Users as logged out in the database, 2023/05/26 15:28:47
+Got all Discounts from database, 2023/05/26 16:11:00
+Loaded Users from database, 2023/05/26 16:11:00
+Got all matches from database, 2023/05/26 16:11:00
+Updated all Users as logged out in the database, 2023/05/26 16:11:26
+Got all Discounts from database, 2023/05/26 16:11:59
+Loaded Users from database, 2023/05/26 16:11:59
+Got all matches from database, 2023/05/26 16:11:59
+Updated all Users as logged out in the database, 2023/05/26 16:12:02
+Got all Discounts from database, 2023/05/26 16:12:20
+Loaded Users from database, 2023/05/26 16:12:20
+Got all matches from database, 2023/05/26 16:12:20
+Updated all Users as logged out in the database, 2023/05/26 16:12:24
+Got all Discounts from database, 2023/05/26 16:12:49
+Loaded Users from database, 2023/05/26 16:12:49
+Got all matches from database, 2023/05/26 16:12:49
+Updated all Users as logged out in the database, 2023/05/26 16:12:53
+Got all Discounts from database, 2023/05/26 16:16:03
+Loaded Users from database, 2023/05/26 16:16:03
+Got all matches from database, 2023/05/26 16:16:03
+Updated User as logged in the database, 2023/05/26 16:16:09
+Added Stand to database, 2023/05/26 16:16:27
+Added Stand to database, 2023/05/26 16:16:35
+Added Stand to database, 2023/05/26 16:16:46
+Added Stand to database, 2023/05/26 16:16:59
+Added Stadium to database, 2023/05/26 16:16:59
+Updated stadium id for stand Tribuna 1, 2023/05/26 16:16:59
+Updated stadium id for stand Tribuna 2, 2023/05/26 16:16:59
+Updated stadium id for stand Peluza Nord, 2023/05/26 16:16:59
+Updated stadium id for stand Peluza Oaspete, 2023/05/26 16:16:59
+Added PriceCategory to database, 2023/05/26 16:17:21
+Updated all Users as logged out in the database, 2023/05/26 16:17:33
+Got all Discounts from database, 2023/05/26 16:19:17
+Loaded Users from database, 2023/05/26 16:19:17
+Updated all Users as logged out in the database, 2023/05/26 16:19:59

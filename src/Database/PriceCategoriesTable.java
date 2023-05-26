@@ -154,23 +154,8 @@ public class PriceCategoriesTable {
     public void updateMatchID(PriceCategory priceCategory, int match_id, int stand_id) {
         try {
             Statement statement = connection.createStatement();
-            // Get stand id of the price category
-            ResultSet standId = statement.executeQuery("SELECT standid FROM PriceCategories WHERE categorytype = '" + priceCategory.getName() + "'");
-            if (standId.next()) {
-                int standIdValue = standId.getInt("standid");
-
-                // Get id of the price category
-                ResultSet resultSet = statement.executeQuery("SELECT pricecategoryid FROM PriceCategories WHERE categorytype = '" + priceCategory.getName() + "' AND standid = " + standIdValue);
-                if (resultSet.next()) {
-                    int id = resultSet.getInt("pricecategoryid");
-
-                    // Update match id
-                    statement.executeUpdate("UPDATE PriceCategories SET matchid = " + match_id + " WHERE pricecategoryid = " + id);
-                    AuditService.writeAction("Updated match id of PriceCategory in database");
-                }
-                resultSet.close();
-            }
-            standId.close();
+            statement.executeUpdate("UPDATE PriceCategories SET matchid = " + match_id + " WHERE standid = " + stand_id + " AND categorytype = '" + priceCategory.getName() + "'");
+            AuditService.writeAction("Updated match id for PriceCategory");
             statement.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -190,7 +175,7 @@ public class PriceCategoriesTable {
                     Statement priceStatement = connection.createStatement(); // Create a new Statement object
                     ResultSet price = priceStatement.executeQuery("SELECT southnorthprice FROM SouthNorthPrices WHERE id = " + id);
                     if (price.next()) {
-                        System.out.println("Categoria de pret " + categoryType + " are pretul " + price.getInt("southnorthprice"));
+                        System.out.println(id + ". Categoria de pret " + categoryType + " are pretul " + price.getInt("southnorthprice"));
                     }
                     price.close(); // Close the price ResultSet
                     priceStatement.close(); // Close the price Statement
@@ -198,19 +183,23 @@ public class PriceCategoriesTable {
                     Statement priceStatement = connection.createStatement(); // Create a new Statement object
                     ResultSet price = priceStatement.executeQuery("SELECT eastwestprice FROM EastWestPrices WHERE id = " + id);
                     if (price.next()) {
-                        System.out.println("Categoria de pret " + categoryType + " are pretul " + price.getInt("eastwestprice"));
+                        System.out.println(id + ". Categoria de pret " + categoryType + " are pretul " + price.getInt("eastwestprice"));
                     }
                     price.close(); // Close the price ResultSet
                     priceStatement.close(); // Close the price Statement
-                } else if (categoryType.equals("VIP")) {
+                } else if (categoryType.equals("VIP2")) {
                     Statement priceStatement = connection.createStatement(); // Create a new Statement object
-                    ResultSet price = priceStatement.executeQuery("SELECT vipprice, privateloungeaccess FROM VIPPrices WHERE id = " + id);
+                    ResultSet price = priceStatement.executeQuery("SELECT vipprice FROM VIPPrices WHERE id = " + id);
                     if (price.next()) {
-                        if (price.getInt("privateloungeaccess") == 1) {
-                            System.out.println("Categoria de pret " + categoryType + " are pretul " + price.getInt("vipprice") + " si acces la lounge privat");
-                        } else {
-                            System.out.println("Categoria de pret " + categoryType + " are pretul " + price.getInt("vipprice") + " si nu are acces la lounge privat");
-                        }
+                        System.out.println(id + ". Categoria de pret " + categoryType + " are pretul " + price.getInt("vipprice") + " si nu are acces la lounge");
+                    }
+                    price.close(); // Close the price ResultSet
+                    priceStatement.close(); // Close the price Statement
+                } else if (categoryType.equals("VIP1")) {
+                    Statement priceStatement = connection.createStatement(); // Create a new Statement object
+                    ResultSet price = priceStatement.executeQuery("SELECT vipprice FROM VIPPrices WHERE id = " + id);
+                    if (price.next()) {
+                        System.out.println(id + ". Categoria de pret " + categoryType + " are pretul " + price.getInt("vipprice") + " si are acces la lounge");
                     }
                     price.close(); // Close the price ResultSet
                     priceStatement.close(); // Close the price Statement

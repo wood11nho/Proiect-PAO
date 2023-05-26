@@ -3,12 +3,21 @@ package Database;
 import Main.AuditService;
 import MatchDetails.Match;
 import MatchDetails.Stadium;
+import MatchDetails.Stand;
+import OrderDetails.Discount;
+import Prices.EastWestPrice;
+import Prices.PriceCategory;
+import Prices.SouthNorthPrice;
+import Prices.VipPrice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MatchesTable {
     private Connection connection;
@@ -161,4 +170,139 @@ public class MatchesTable {
         }
         return -1;
     }
+
+    public List<Match> getAllMatchesInAList() {
+        List<Match> matches = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Matches");
+            while (resultSet.next()) {
+                int matchId = resultSet.getInt("matchid");
+                String team1 = resultSet.getString("team1");
+                String team2 = resultSet.getString("team2");
+                int stadiumId = resultSet.getInt("stadiumid");
+                int soldTickets = resultSet.getInt("soldtickets");
+                String date = resultSet.getString("datetime");
+
+                // get data from Stadiums table about the stadium, using stadiumid
+                Statement stadiumStatement = connection.createStatement();
+                ResultSet stadium = stadiumStatement.executeQuery("SELECT * FROM Stadiums WHERE StadiumID = " + stadiumId);
+                if (stadium.next()) {
+                    String stadiumName = stadium.getString("name");
+                    String stadiumCity = stadium.getString("city");
+                    Stand[] stands = new Stand[4];
+                    PriceCategory[] priceCategories = new PriceCategory[7];
+                    Discount[] discounts = new Discount[4];
+                    Statement standsStatement = connection.createStatement();
+                    ResultSet standsResultSet = standsStatement.executeQuery("SELECT * FROM Stands WHERE stadiumid = " + stadiumId);
+                    int i = 0;
+                    int j = 0;
+                    while (standsResultSet.next()) {
+                        int standId = standsResultSet.getInt("standid");
+                        String standName = standsResultSet.getString("name");
+                        int standCapacity = standsResultSet.getInt("capacity");
+                        boolean home_stand = standsResultSet.getBoolean("ishomestand");
+                        int rowsnumber = standsResultSet.getInt("rowsnumber");
+                        int seatsperrow = standsResultSet.getInt("seatsperrow");
+                        stands[i] = new Stand(standName, standCapacity, home_stand, rowsnumber, seatsperrow);
+
+                        // Fetch data from PriceCategories ResultSet and store it in variables
+                        int priceCategoryPrice = 0;
+                        boolean privateLoungeAccess = false;
+                        String priceCategoryName = "";
+
+                        // Create a new Statement for executing queries inside the inner loop
+                        Statement priceStatement = connection.createStatement();
+                        ResultSet priceCategoriesResultSet = priceStatement.executeQuery("SELECT * FROM PriceCategories WHERE standid = " + standId + " AND matchid = " + matchId);
+
+                        while (priceCategoriesResultSet.next()) {
+                            int priceCategoryId = priceCategoriesResultSet.getInt("pricecategoryid");
+                            priceCategoryName = priceCategoriesResultSet.getString("categorytype");
+//                            System.out.println(priceCategoryName + " " + priceCategoryId);
+                            if (priceCategoryName.equals("VIP1") || priceCategoryName.equals("VIP2")) {
+                                Statement vipStatement = connection.createStatement();
+                                ResultSet vipresultset = vipStatement.executeQuery("SELECT * FROM VIPPrices WHERE id = " + priceCategoryId);
+                                if (vipresultset.next()) {
+                                    privateLoungeAccess = vipresultset.getBoolean("privateloungeaccess");
+                                    priceCategoryPrice = vipresultset.getInt("vipprice");
+                                }
+                                vipresultset.close(); // Close the VIPPrices ResultSet
+                            } else if (priceCategoryName.equals("Peluza")) {
+                                Statement SouthNorthStatement = connection.createStatement();
+                                ResultSet SouthNorthResultSet = SouthNorthStatement.executeQuery("SELECT * FROM SouthNorthPrices WHERE id = " + priceCategoryId);
+                                if (SouthNorthResultSet.next()) {
+                                    priceCategoryPrice = SouthNorthResultSet.getInt("SouthNorthPrice");
+                                }
+                                SouthNorthResultSet.close(); // Close the SouthNorthPrices ResultSet
+                            } else if (priceCategoryName.equals("Tribuna")) {
+                                Statement EastWestStatement = connection.createStatement();
+                                ResultSet EastWestResultSet = EastWestStatement.executeQuery("SELECT * FROM EastWestPrices WHERE id = " + priceCategoryId);
+                                if (EastWestResultSet.next()) {
+                                    priceCategoryPrice = EastWestResultSet.getInt("EastWestPrice");
+                                }
+                                EastWestResultSet.close(); // Close the EastWestPrices ResultSet
+                            }
+                            if (priceCategoryId >= priceCategories.length) {
+                                priceCategoryId -= priceCategories.length;
+                            }
+                            priceCategories[priceCategoryId] = createPriceCategory(priceCategoryName, stands[i], priceCategoryPrice, privateLoungeAccess);
+                            j++;
+                        }
+                        priceCategoriesResultSet.close(); // Close the priceCategoriesResultSet
+                        priceStatement.close(); // Close the priceStatement
+                        i++;
+                    }
+                    standsStatement.close(); // Close the standsStatement
+                    standsResultSet.close(); // Close the standsResultSet
+
+                    stadium.close(); // Close the stadium ResultSet
+                    stadiumStatement.close(); // Close the stadium Statement
+
+                    Statement discountsStatement = connection.createStatement();
+                    ResultSet discountsResultSet = discountsStatement.executeQuery("SELECT * FROM Discounts_Matches WHERE matchid = " + matchId);
+                    int k = 0;
+                    while (discountsResultSet.next()) {
+                        int discountId = discountsResultSet.getInt("discountid");
+                        Statement discountStatement = connection.createStatement();
+                        ResultSet discountResultSet = discountStatement.executeQuery("SELECT * FROM Discounts WHERE discountid = " + discountId);
+                        if (discountResultSet.next()) {
+                            String discountName = discountResultSet.getString("name");
+                            double discountPercentage = discountResultSet.getDouble("discount");
+                            discounts[k] = new Discount(discountName, discountPercentage);
+                        }
+                        discountResultSet.close(); // Close the discountResultSet
+                        discountStatement.close(); // Close the discountStatement
+                        k++;
+                    }
+                    discountsResultSet.close(); // Close the discountsResultSet
+                    discountsStatement.close(); // Close the discountsStatement
+
+                    matches.add(new Match(matchId, team1, team2, new Stadium(stadiumName, stadiumCity, stands), soldTickets, LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
+                    matches.get(matches.size() - 1).setPrices(priceCategories);
+                    matches.get(matches.size() - 1).setDiscounts(discounts);
+                }
+            }
+            resultSet.close(); // Close the resultSet
+            statement.close(); // Close the main statement
+            AuditService.writeAction("Got all matches from database");
+            //afisare detalii meci 1
+//            matches.get(0).printMatchDetails();
+            return matches;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    private PriceCategory createPriceCategory(String priceCategoryName, Stand stand, int price, boolean privateLoungeAccess) {
+        if (priceCategoryName.equals("VIP1") || priceCategoryName.equals("VIP2")) {
+            return new VipPrice(priceCategoryName, stand, price, privateLoungeAccess);
+        } else if (priceCategoryName.equals("Peluza")) {
+            return new SouthNorthPrice(priceCategoryName, stand, price);
+        } else if (priceCategoryName.equals("Tribuna")) {
+            return new EastWestPrice(priceCategoryName, stand, price);
+        }
+        return null;
+    }
+
 }
